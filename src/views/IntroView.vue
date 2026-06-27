@@ -30,7 +30,7 @@
       type="button"
       @click="handleSkip"
     >
-      跳过开场
+      跳过开场按钮
     </button>
   </StageContainer>
 </template>
