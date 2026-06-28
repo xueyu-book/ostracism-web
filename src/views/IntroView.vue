@@ -315,15 +315,13 @@ function triggerHide() {
 function isInDropZone(dragEl, zoneEl) {
   const dragRect = dragEl.getBoundingClientRect()
   const zoneRect = zoneEl.getBoundingClientRect()
-  const centerX = dragRect.left + dragRect.width / 2
-  const centerY = dragRect.top + dragRect.height / 2
-  const pad = 28
+  const tolerance = 4
 
   return (
-    centerX >= zoneRect.left - pad &&
-    centerX <= zoneRect.right + pad &&
-    centerY >= zoneRect.top - pad &&
-    centerY <= zoneRect.bottom + pad
+    dragRect.left >= zoneRect.left - tolerance &&
+    dragRect.top >= zoneRect.top - tolerance &&
+    dragRect.right <= zoneRect.right + tolerance &&
+    dragRect.bottom <= zoneRect.bottom + tolerance
   )
 }
 
