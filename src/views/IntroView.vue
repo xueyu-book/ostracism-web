@@ -40,17 +40,50 @@
     </div>
 
     <img
+      v-show="showDefaultPillars"
       class="intro-view__pillar intro-view__pillar--left"
       :class="{ 'intro-view__pillar--spread': pillarsSpread }"
       src="@/assets/images/home/pillar.svg"
       alt=""
     />
     <img
+      v-show="showDefaultPillars"
       class="intro-view__pillar intro-view__pillar--right"
       :class="{ 'intro-view__pillar--spread': pillarsSpread }"
       src="@/assets/images/home/pillar.svg"
       alt=""
     />
+
+    <div
+      v-show="showCardPillars"
+      class="intro-view__nav-pillar intro-view__nav-pillar--left"
+      :class="{ 'intro-view__nav-pillar--spread': pillarsSpread }"
+    >
+      <div ref="leftPillarScrollRef" class="intro-view__nav-pillar-scroll">
+        <img
+          v-for="(src, index) in cardPillarLeftIcons"
+          :key="`card-pillar-left-${index}`"
+          class="intro-view__nav-pillar-icon"
+          :src="src"
+          alt=""
+        />
+      </div>
+    </div>
+    <div
+      v-show="showCardPillars"
+      class="intro-view__nav-pillar intro-view__nav-pillar--right"
+      :class="{ 'intro-view__nav-pillar--spread': pillarsSpread }"
+    >
+      <div ref="rightPillarScrollRef" class="intro-view__nav-pillar-scroll">
+        <img
+          v-for="(src, index) in cardPillarRightIcons"
+          :key="`card-pillar-right-${index}`"
+          class="intro-view__nav-pillar-icon"
+          :src="src"
+          alt=""
+        />
+      </div>
+    </div>
 
     <img
       v-show="!activated"
@@ -139,16 +172,22 @@
       </button>
     </nav>
 
-    <main v-show="contentVisible" class="intro-view__content">
-      <section class="intro-view__module">
-        <p class="intro-view__module-title">{{ activeModule.label }}</p>
-      </section>
+    <main
+      v-show="contentVisible"
+      class="intro-view__content"
+      :class="{ 'intro-view__content--card': isCardModule }"
+    >
+      <component
+        :is="activeModuleComponent"
+        :content-visible="contentVisible"
+        @scroll-sync="syncPillarScroll"
+      />
     </main>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, computed, onBeforeUnmount, nextTick } from 'vue'
+import { ref, reactive, computed, watch, onBeforeUnmount, nextTick } from 'vue'
 import letterO from '@/assets/images/home/0_grey.svg'
 import letterS from '@/assets/images/home/1_S.svg'
 import letterT from '@/assets/images/home/2_T.svg'
@@ -164,6 +203,19 @@ import iconProject from '@/assets/images/nav_icon/3_project.svg?raw'
 import iconMenu from '@/assets/images/nav_icon/4_menu.svg?raw'
 import iconProvision from '@/assets/images/nav_icon/5_provision.svg?raw'
 import { pxToRem } from '@/utils/rem'
+import CardModule from './components/CardModule.vue'
+import RuleModule from './components/RuleModule.vue'
+import ProjectModule from './components/ProjectModule.vue'
+import MenuModule from './components/MenuModule.vue'
+import ProvisionModule from './components/ProvisionModule.vue'
+
+const moduleComponents = {
+  card: CardModule,
+  rule: RuleModule,
+  project: ProjectModule,
+  menu: MenuModule,
+  provision: ProvisionModule
+}
 
 function withNavSvg(svg) {
   if (/preserveAspectRatio=/.test(svg)) {
@@ -171,6 +223,23 @@ function withNavSvg(svg) {
   }
   return svg.replace('<svg', '<svg preserveAspectRatio="none"')
 }
+
+function loadSortedPillarIcons(side) {
+  return Object.entries(
+    import.meta.glob('@/assets/images/nav_pillar/card/*.svg', { eager: true, import: 'default' })
+  )
+    .filter(([path]) => new RegExp(`/${side}_\\d+\\.svg$`).test(path))
+    .sort(([pathA], [pathB]) => {
+      const numA = parseInt(pathA.match(new RegExp(`${side}_(\\d+)`))[1], 10)
+      const numB = parseInt(pathB.match(new RegExp(`${side}_(\\d+)`))[1], 10)
+      return numA - numB
+    })
+    .slice(0, 7)
+    .map(([, src]) => src)
+}
+
+const cardPillarLeftIcons = loadSortedPillarIcons('left')
+const cardPillarRightIcons = loadSortedPillarIcons('right')
 
 const navItems = [
   { id: 'card', label: '卡片展示', svg: withNavSvg(iconCard), top: 65, left: 220, width: 46, height: 64 },
@@ -229,9 +298,43 @@ const navRevealed = ref(false)
 const contentVisible = ref(false)
 const activeNav = ref('card')
 
-const activeModule = computed(
-  () => navItems.find((item) => item.id === activeNav.value) ?? navItems[0]
+const activeModuleComponent = computed(
+  () => moduleComponents[activeNav.value] ?? CardModule
 )
+
+const isCardModule = computed(() => activeNav.value === 'card')
+const showCardPillars = computed(() => contentVisible.value && isCardModule.value)
+const showDefaultPillars = computed(() => !showCardPillars.value)
+
+const leftPillarScrollRef = ref(null)
+const rightPillarScrollRef = ref(null)
+
+function resetPillarScroll() {
+  ;[leftPillarScrollRef.value, rightPillarScrollRef.value].forEach((el) => {
+    if (el) el.scrollTop = 0
+  })
+}
+
+function syncPillarScroll({ scrollTop, scrollHeight, clientHeight }) {
+  if (!showCardPillars.value) return
+
+  const pillars = [leftPillarScrollRef.value, rightPillarScrollRef.value]
+  if (!pillars[0] || !pillars[1]) return
+
+  const cardMaxScroll = Math.max(scrollHeight - clientHeight, 0)
+  const ratio = cardMaxScroll > 0 ? scrollTop / cardMaxScroll : 0
+
+  pillars.forEach((el) => {
+    const maxScroll = Math.max(el.scrollHeight - el.clientHeight, 0)
+    el.scrollTop = ratio * maxScroll
+  })
+}
+
+watch(isCardModule, (card) => {
+  if (!card) {
+    resetPillarScroll()
+  }
+})
 
 function onNavClick(id) {
   activeNav.value = id
@@ -431,6 +534,7 @@ $soldier-h: 220px;
 $greek-blue: #0655bc;
 $wall-reveal-bg: #efedea;
 $nav-active-bg: #918f81;
+$nav-pillar-w: 154px;
 $nav-bg-scale: 1.2;
 $nav-reveal-duration: 0.75s;
 
@@ -586,6 +690,57 @@ $nav-reveal-duration: 0.75s;
         right: $page-padding - $pillar-spread;
       }
     }
+  }
+
+  &__nav-pillar {
+    position: absolute;
+    top: 0;
+    width: $nav-pillar-w;
+    height: $pillar-h;
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: auto;
+    transition:
+      left $pillar-spread-duration ease-in-out,
+      right $pillar-spread-duration ease-in-out;
+
+    &--left {
+      left: $page-padding;
+
+      &.intro-view__nav-pillar--spread {
+        left: $page-padding - $pillar-spread;
+      }
+    }
+
+    &--right {
+      right: $page-padding;
+
+      &.intro-view__nav-pillar--spread {
+        right: $page-padding - $pillar-spread;
+      }
+    }
+  }
+
+  &__nav-pillar-scroll {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    pointer-events: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__nav-pillar-icon {
+    display: block;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    user-select: none;
+    pointer-events: none;
   }
 
   &__totem {
@@ -758,23 +913,11 @@ $nav-reveal-duration: 0.75s;
     align-items: center;
     justify-content: center;
     pointer-events: none;
-  }
 
-  &__module {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: auto;
-  }
-
-  &__module-title {
-    font-family: 'Mengyuan Heiti', sans-serif;
-    font-size: 36px;
-    font-weight: 500;
-    color: $greek-blue;
-    letter-spacing: 0.12em;
+    &--card {
+      align-items: flex-start;
+      justify-content: center;
+    }
   }
 }
 </style>
