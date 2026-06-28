@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/global.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/IntroView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/IntroView.vue" afterDir="false" />
-    </list>
+    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,7 +49,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1782437730268</updated>
-      <workItem from="1782437731367" duration="7948000" />
+      <workItem from="1782437731367" duration="8695000" />
     </task>
     <servers />
   </component>
