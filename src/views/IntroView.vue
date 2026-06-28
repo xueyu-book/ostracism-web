@@ -433,7 +433,7 @@ $soldier-h: 220px;
 $greek-blue: #0655bc;
 $wall-reveal-bg: #efedea;
 $nav-active-bg: #918f81;
-$nav-bg-scale: 1.05;
+$nav-bg-scale: 1.2;
 $nav-reveal-duration: 0.75s;
 
 @keyframes intro-totem-pulse {
@@ -729,14 +729,6 @@ $nav-reveal-duration: 0.75s;
     }
 
     &--active {
-      color: $nav-active-bg;
-    }
-
-    &:hover {
-      color: $nav-active-bg;
-    }
-
-    &--active:hover {
       color: $nav-active-bg;
     }
   }
