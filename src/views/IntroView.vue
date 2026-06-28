@@ -119,11 +119,36 @@
         alt=""
       />
     </Teleport>
+
+    <nav v-show="wallSliding" class="intro-view__nav" aria-label="主导航">
+      <button
+        v-for="(item, index) in navItems"
+        :key="item.id"
+        type="button"
+        class="intro-view__nav-item"
+        :class="{
+          'intro-view__nav-item--active': activeNav === item.id,
+          'intro-view__nav-item--revealed': navRevealed
+        }"
+        :style="getNavItemStyle(item, index)"
+        :aria-label="item.label"
+        :aria-current="activeNav === item.id ? 'page' : undefined"
+        @click="onNavClick(item.id)"
+      >
+        <span class="intro-view__nav-icon" v-html="item.svg" aria-hidden="true" />
+      </button>
+    </nav>
+
+    <main v-show="contentVisible" class="intro-view__content">
+      <section class="intro-view__module">
+        <p class="intro-view__module-title">{{ activeModule.label }}</p>
+      </section>
+    </main>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, onBeforeUnmount, nextTick } from 'vue'
+import { ref, reactive, computed, onBeforeUnmount, nextTick } from 'vue'
 import letterO from '@/assets/images/home/0_grey.svg'
 import letterS from '@/assets/images/home/1_S.svg'
 import letterT from '@/assets/images/home/2_T.svg'
@@ -133,6 +158,43 @@ import letterC from '@/assets/images/home/5_C.svg'
 import letterI from '@/assets/images/home/6_I.svg'
 import letterLowerS from '@/assets/images/home/7_s.svg'
 import letterM from '@/assets/images/home/8_M.svg'
+import iconCard from '@/assets/images/nav_icon/1_card.svg?raw'
+import iconRule from '@/assets/images/nav_icon/2_rule.svg?raw'
+import iconProject from '@/assets/images/nav_icon/3_project.svg?raw'
+import iconMenu from '@/assets/images/nav_icon/4_menu.svg?raw'
+import iconProvision from '@/assets/images/nav_icon/5_provision.svg?raw'
+import { pxToRem } from '@/utils/rem'
+
+function withNavSvg(svg) {
+  if (/preserveAspectRatio=/.test(svg)) {
+    return svg.replace(/preserveAspectRatio="[^"]*"/, 'preserveAspectRatio="none"')
+  }
+  return svg.replace('<svg', '<svg preserveAspectRatio="none"')
+}
+
+const navItems = [
+  { id: 'card', label: '卡片展示', svg: withNavSvg(iconCard), top: 65, left: 220, width: 46, height: 64 },
+  { id: 'rule', label: '规则问题', svg: withNavSvg(iconRule), top: 65, left: 312, width: 28, height: 64 },
+  {
+    id: 'project',
+    label: '项目立意',
+    svg: withNavSvg(iconProject),
+    top: 63,
+    left: 382,
+    width: 58,
+    height: 68
+  },
+  { id: 'menu', label: '驱逐名单', svg: withNavSvg(iconMenu), top: 65, left: 462, width: 68, height: 64 },
+  {
+    id: 'provision',
+    label: '服务条款',
+    svg: withNavSvg(iconProvision),
+    top: 65,
+    left: 552,
+    width: 54,
+    height: 66
+  }
+]
 
 const titleLettersRest = [
   { src: letterS, alt: 'S' },
@@ -147,6 +209,9 @@ const titleLettersRest = [
 
 const HIDE_DURATION = 600
 const HIDE_STAGGER = 280
+const WALL_SLIDE_DURATION_MS = 1200
+const NAV_REVEAL_STAGGER_MS = 180
+const NAV_REVEAL_DURATION_MS = 750
 
 const fadeDelays = {
   soldier: 0,
@@ -160,6 +225,28 @@ const isHiding = ref(false)
 const pillarsSpread = ref(false)
 const wallReady = ref(false)
 const wallSliding = ref(false)
+const navRevealed = ref(false)
+const contentVisible = ref(false)
+const activeNav = ref('card')
+
+const activeModule = computed(
+  () => navItems.find((item) => item.id === activeNav.value) ?? navItems[0]
+)
+
+function onNavClick(id) {
+  activeNav.value = id
+}
+
+function getNavItemStyle(item, index) {
+  return {
+    top: pxToRem(item.top),
+    left: pxToRem(item.left),
+    width: pxToRem(item.width),
+    height: pxToRem(item.height),
+    '--nav-reveal-delay': `${index * NAV_REVEAL_STAGGER_MS}ms`
+  }
+}
+
 const isDragging = ref(false)
 const totemRef = ref(null)
 const ghostRef = ref(null)
@@ -178,6 +265,29 @@ let originX = 0
 let originY = 0
 let activePointerId = null
 let hideTimer = null
+let navRevealTimer = null
+let contentRevealTimer = null
+
+function getNavRevealTotalMs() {
+  return (navItems.length - 1) * NAV_REVEAL_STAGGER_MS + NAV_REVEAL_DURATION_MS
+}
+
+function scheduleNavReveal() {
+  if (navRevealTimer !== null) {
+    window.clearTimeout(navRevealTimer)
+  }
+  if (contentRevealTimer !== null) {
+    window.clearTimeout(contentRevealTimer)
+  }
+  navRevealTimer = window.setTimeout(() => {
+    navRevealed.value = true
+    navRevealTimer = null
+    contentRevealTimer = window.setTimeout(() => {
+      contentVisible.value = true
+      contentRevealTimer = null
+    }, getNavRevealTotalMs())
+  }, WALL_SLIDE_DURATION_MS)
+}
 
 function triggerHide() {
   if (isHiding.value || activated.value) return
@@ -195,6 +305,7 @@ function triggerHide() {
         pillarsSpread.value = true
         requestAnimationFrame(() => {
           wallSliding.value = true
+          scheduleNavReveal()
         })
       })
     })
@@ -289,6 +400,12 @@ onBeforeUnmount(() => {
   if (hideTimer !== null) {
     window.clearTimeout(hideTimer)
   }
+  if (navRevealTimer !== null) {
+    window.clearTimeout(navRevealTimer)
+  }
+  if (contentRevealTimer !== null) {
+    window.clearTimeout(contentRevealTimer)
+  }
 })
 </script>
 
@@ -315,6 +432,9 @@ $soldier-w: 524px;
 $soldier-h: 220px;
 $greek-blue: #0655bc;
 $wall-reveal-bg: #efedea;
+$nav-active-bg: #918f81;
+$nav-bg-scale: 1.05;
+$nav-reveal-duration: 0.75s;
 
 @keyframes intro-totem-pulse {
   0%,
@@ -564,6 +684,107 @@ $wall-reveal-bg: #efedea;
     &--pulse {
       animation: intro-hint-pulse 2.4s ease-in-out infinite;
     }
+  }
+
+  &__nav {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  &__nav-item {
+    position: absolute;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: $greek-blue;
+    overflow: visible;
+    opacity: 0;
+    transform: translateX(-14px) scale(0.92);
+    pointer-events: none;
+    transition:
+      opacity $nav-reveal-duration ease-out,
+      transform $nav-reveal-duration cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.2s ease;
+    transition-delay: var(--nav-reveal-delay, 0ms), var(--nav-reveal-delay, 0ms), 0ms;
+
+    &--revealed {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: calc(100% * #{$nav-bg-scale});
+      height: calc(100% * #{$nav-bg-scale});
+      transform: translate(-50%, -50%);
+      background: url('@/assets/images/nav_icon/nav_bg.jpg') repeat-x left center / auto 100%;
+      z-index: 0;
+    }
+
+    &--active {
+      color: $nav-active-bg;
+    }
+
+    &:hover {
+      color: $nav-active-bg;
+    }
+
+    &--active:hover {
+      color: $nav-active-bg;
+    }
+  }
+
+  &__nav-icon {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 0;
+    pointer-events: none;
+
+    :deep(svg) {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 166px;
+    right: 110px;
+    bottom: 206px;
+    left: 110px;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  &__module {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+  }
+
+  &__module-title {
+    font-family: 'Mengyuan Heiti', sans-serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: $greek-blue;
+    letter-spacing: 0.12em;
   }
 }
 </style>

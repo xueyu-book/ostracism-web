@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="" />
+    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/assets/images/home/pillar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/home/pillar.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_icon/1_card.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/nav_icon/1_card.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_icon/2_rule.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/nav_icon/2_rule.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_icon/3_project.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/nav_icon/3_project.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_icon/4_menu.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/nav_icon/4_menu.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_icon/5_provision.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/nav_icon/5_provision.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/IntroView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/IntroView.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +57,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1782437730268</updated>
-      <workItem from="1782437731367" duration="8695000" />
+      <workItem from="1782437731367" duration="9249000" />
     </task>
     <servers />
   </component>

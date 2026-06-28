@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="_图层_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 604 593">
-  <!-- Generator: Adobe Illustrator 30.0.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 123)  -->
+<svg id="_图层_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 247.5 551.1">
+  <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
   <defs>
     <style>
       .st0 {
-        fill: #0655bc;
+        fill: currentColor;
       }
     </style>
   </defs>
-  <circle class="st0" cx="302" cy="144.7" r="123.75"/>
-  <rect class="st0" x="266.95" y="246.49" width="70.1" height="201.82"/>
-  <rect class="st0" x="178.25" y="415.38" width="247.49" height="98.78"/>
-  <rect class="st0" x="178.25" y="525.13" width="247.49" height="46.92"/>
+  <circle class="st0" cx="123.8" cy="123.8" r="123.8"/>
+  <rect class="st0" x="88.7" y="225.5" width="70.1" height="201.8"/>
+  <rect class="st0" y="394.4" width="247.5" height="98.8"/>
+  <rect class="st0" y="504.2" width="247.5" height="46.9"/>
 </svg>
