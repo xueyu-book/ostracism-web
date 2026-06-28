@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="" />
+    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/global.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/IntroView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/IntroView.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 3
@@ -21,6 +28,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/yugeng/Documents/zuanqian-project/aisen/ostracism-web",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -45,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1782437730268</updated>
-      <workItem from="1782437731367" duration="3991000" />
+      <workItem from="1782437731367" duration="7948000" />
     </task>
     <servers />
   </component>
