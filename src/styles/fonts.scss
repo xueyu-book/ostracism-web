@@ -5,3 +5,35 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Mengyuan Heiti W6';
+  src: url('@/assets/fonts/MengyuanHeiti/DreamHanSansExpCN-W6.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mengyuan Heiti W14';
+  src: url('@/assets/fonts/MengyuanHeiti/DreamHanSansExpCN-W14.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norse';
+  src: url('@/assets/fonts/norse/Norse.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norse';
+  src: url('@/assets/fonts/norse/Norsebold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

@@ -175,7 +175,10 @@
     <main
       v-show="contentVisible"
       class="intro-view__content"
-      :class="{ 'intro-view__content--card': isCardModule }"
+      :class="{
+        'intro-view__content--card': isCardModule,
+        'intro-view__content--rule': isRuleModule
+      }"
     >
       <component
         :is="activeModuleComponent"
@@ -224,9 +227,12 @@ function withNavSvg(svg) {
   return svg.replace('<svg', '<svg preserveAspectRatio="none"')
 }
 
-function loadSortedPillarIcons(side) {
+function loadNavPillarIcons(side, limit) {
   return Object.entries(
-    import.meta.glob('@/assets/images/nav_pillar/card/*.svg', { eager: true, import: 'default' })
+    import.meta.glob('@/assets/images/nav_pillar/card/*.svg', {
+      eager: true,
+      import: 'default'
+    })
   )
     .filter(([path]) => new RegExp(`/${side}_\\d+\\.svg$`).test(path))
     .sort(([pathA], [pathB]) => {
@@ -234,12 +240,12 @@ function loadSortedPillarIcons(side) {
       const numB = parseInt(pathB.match(new RegExp(`${side}_(\\d+)`))[1], 10)
       return numA - numB
     })
-    .slice(0, 7)
+    .slice(0, limit)
     .map(([, src]) => src)
 }
 
-const cardPillarLeftIcons = loadSortedPillarIcons('left')
-const cardPillarRightIcons = loadSortedPillarIcons('right')
+const cardPillarLeftIcons = loadNavPillarIcons('left', 7)
+const cardPillarRightIcons = loadNavPillarIcons('right', 7)
 
 const navItems = [
   { id: 'card', label: '卡片展示', svg: withNavSvg(iconCard), top: 65, left: 220, width: 46, height: 64 },
@@ -303,6 +309,7 @@ const activeModuleComponent = computed(
 )
 
 const isCardModule = computed(() => activeNav.value === 'card')
+const isRuleModule = computed(() => activeNav.value === 'rule')
 const showCardPillars = computed(() => contentVisible.value && isCardModule.value)
 const showDefaultPillars = computed(() => !showCardPillars.value)
 
@@ -533,7 +540,7 @@ $soldier-w: 524px;
 $soldier-h: 220px;
 $greek-blue: #0655bc;
 $wall-reveal-bg: #efedea;
-$nav-active-bg: #918f81;
+$nav-icon-default: #918f81;
 $nav-pillar-w: 154px;
 $nav-bg-scale: 1.2;
 $nav-reveal-duration: 0.75s;
@@ -852,7 +859,7 @@ $nav-reveal-duration: 0.75s;
     border: none;
     background: none;
     cursor: pointer;
-    color: $greek-blue;
+    color: $nav-icon-default;
     overflow: visible;
     opacity: 0;
     transform: translateX(-14px) scale(0.92);
@@ -881,8 +888,9 @@ $nav-reveal-duration: 0.75s;
       z-index: 0;
     }
 
+    &--revealed:hover,
     &--active {
-      color: $nav-active-bg;
+      color: $greek-blue;
     }
   }
 
@@ -914,7 +922,8 @@ $nav-reveal-duration: 0.75s;
     justify-content: center;
     pointer-events: none;
 
-    &--card {
+    &--card,
+    &--rule {
       align-items: flex-start;
       justify-content: center;
     }
