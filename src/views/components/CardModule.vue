@@ -17,22 +17,40 @@
     </div>
 
     <div v-show="selectedCard" class="card-module__detail">
-      <template v-if="selectedCard">
-        <button type="button" class="card-module__back" aria-label="返回卡片列表" @click="clearSelection">
-          返回
-        </button>
+      <div
+        class="card-module__back"
+        @click="clearSelection"
+      >
         <img
-          class="card-module__detail-img"
-          :src="selectedCard.detail"
-          :alt="`卡片 ${selectedCard.id} 详情`"
+          class="card-module__back-icon"
+          src="@/assets/images/card_detail/back.svg"
+          alt=""
         />
+      </div>
+      <template v-if="selectedCard && cardDetail">
+        <div class="card-module__detail-panel">
+          <div class="card-module__identity">{{ cardDetail.identity }}</div>
+          <div class="card-module__expiry">{{ cardDetail.expiry }}</div>
+          <div class="card-module__scope">{{ cardDetail.scope }}</div>
+          <div class="card-module__difficulty">{{ cardDetail.difficulty }}</div>
+          <div class="card-module__benefits">{{ cardDetail.benefits }}</div>
+          <img
+            class="card-module__card-img"
+            :src="selectedCard.thumb"
+            :alt="`卡片 ${selectedCard.id}`"
+          />
+        </div>
       </template>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { getCardDetail } from '@/content/cardDetailContent'
+import heroLow from '@/assets/images/card_detail/hero_low.svg'
+import heroMid from '@/assets/images/card_detail/hero_mid.svg'
+import heroHigh from '@/assets/images/card_detail/hero_high.svg'
 
 const props = defineProps({
   contentVisible: {
@@ -43,36 +61,24 @@ const props = defineProps({
 
 const emit = defineEmits(['scroll-sync'])
 
+const heroMap = {
+  low: heroLow,
+  mid: heroMid,
+  high: heroHigh
+}
+
 function loadCards() {
   const thumbEntries = Object.entries(
     import.meta.glob('@/assets/images/card/*.{jpg,jpeg,png,webp,svg}', {
       eager: true,
       import: 'default'
     })
-  ).filter(([path]) => /card_\d+\./i.test(path))
-
-  const detailEntries = Object.entries(
-    import.meta.glob('@/assets/images/card/*_detail.{jpg,jpeg,png,webp,svg}', {
-      eager: true,
-      import: 'default'
-    })
-  )
-
-  const detailMap = new Map(
-    detailEntries.map(([path, src]) => {
-      const id = parseInt(path.match(/card_(\d+)_detail/i)?.[1] ?? '0', 10)
-      return [id, src]
-    })
-  )
+  ).filter(([path]) => /card_\d+\./i.test(path) && !/_detail\./i.test(path))
 
   return thumbEntries
     .map(([path, thumb]) => {
       const id = parseInt(path.match(/card_(\d+)/i)?.[1] ?? '0', 10)
-      return {
-        id,
-        thumb,
-        detail: detailMap.get(id) ?? thumb
-      }
+      return { id, thumb }
     })
     .sort((a, b) => a.id - b.id)
 }
@@ -80,6 +86,15 @@ function loadCards() {
 const cards = loadCards()
 const selectedCard = ref(null)
 const gridWrapRef = ref(null)
+
+const cardDetail = computed(() =>
+  selectedCard.value ? getCardDetail(selectedCard.value.id) : null
+)
+
+const heroSrc = computed(() => {
+  const level = cardDetail.value?.difficultyLevel ?? 'mid'
+  return heroMap[level] ?? heroMid
+})
 
 let scrollTarget = null
 
@@ -170,7 +185,28 @@ $card-h: 170px;
 $card-gap-x: 40px;
 $card-gap-y: 40px;
 $card-grid-w: $card-w * 5 + $card-gap-x * 4;
+$card-detail-area-h: 684px;
+$card-detail-w: 1524px;
+$card-detail-h: 464px;
+$card-detail-edge: 40px;
+$card-detail-back-gap: 40px;
+$card-detail-back-w: 110px;
+$card-detail-back-h: 44px;
+$card-detail-img-w: 438px;
+$card-detail-img-h: 288px;
+$card-detail-identity-left: 148px;
+$card-detail-identity-top: 54px;
+$card-detail-expiry-left: 528px;
+$card-detail-expiry-top: 54px;
+$card-detail-scope-left: 148px;
+$card-detail-scope-top: 218px;
+$card-detail-difficulty-left: 528px;
+$card-detail-difficulty-top: 218px;
+$card-detail-benefits-left: 148px;
+$card-detail-benefits-top: 382px;
+$card-detail-benefits-w: 580px;
 $greek-blue: #0655bc;
+$detail-gray: #959595;
 
 .card-module {
   width: $card-module-w;
@@ -222,37 +258,213 @@ $greek-blue: #0655bc;
   }
 
   &__detail {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $card-detail-back-gap;
     width: $card-module-w;
-    height: $card-module-h;
+    height: $card-detail-area-h;
+    padding-top: $card-module-pt;
+    box-sizing: border-box;
+  }
+
+  &__detail-panel {
+    position: relative;
+    width: $card-detail-w;
+    height: $card-detail-h;
+    background: url('@/assets/images/card_detail/card_bg.svg') no-repeat center / 100% 100%;
+    box-sizing: border-box;
     overflow: hidden;
   }
 
-  &__detail-img {
+  &__card-img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: $card-detail-img-w;
+    height: $card-detail-img-h;
+    object-fit: cover;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &__identity,
+  &__expiry,
+  &__scope,
+  &__difficulty,
+  &__benefits {
+    position: absolute;
+    margin: 0;
+    font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: $detail-gray;
+  }
+
+  &__identity {
+    left: $card-detail-identity-left;
+    top: $card-detail-identity-top;
+  }
+
+  &__expiry {
+    left: $card-detail-expiry-left;
+    top: $card-detail-expiry-top;
+  }
+
+  &__scope {
+    left: $card-detail-scope-left;
+    top: $card-detail-scope-top;
+  }
+
+  &__difficulty {
+    left: $card-detail-difficulty-left;
+    top: $card-detail-difficulty-top;
+  }
+
+  &__benefits {
+    left: $card-detail-benefits-left;
+    top: $card-detail-benefits-top;
+    width: $card-detail-benefits-w;
+  }
+
+  &__back {
+    align-self: flex-start;
+    margin-left: ($card-module-w - $card-detail-w) / 2;
+    width: $card-detail-back-w;
+    height: $card-detail-back-h;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &__back-icon {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: contain;
     user-select: none;
+    pointer-events: none;
   }
 
-  &__back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    padding: 8px 16px;
-    border: none;
-    background: rgba(#efedea, 0.92);
-    font-family: 'Mengyuan Heiti', sans-serif;
-    font-size: 18px;
-    color: $greek-blue;
-    cursor: pointer;
-    transition: background 0.2s ease;
+  &__detail-body {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    padding:
+      ($card-detail-edge + $card-detail-back-h + 24px)
+      40px
+      40px
+      ($card-detail-edge + 8px);
+    box-sizing: border-box;
+    gap: 24px;
+  }
 
-    &:hover {
-      background: rgba(#efedea, 1);
+  &__detail-meta {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    gap: 20px;
+  }
+
+  &__detail-col {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__detail-connector {
+    flex: 0 0 auto;
+    width: 24px;
+    height: auto;
+    align-self: center;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__field {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+
+    &--wide {
+      align-items: flex-start;
     }
+  }
+
+  &__field-icon {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &__field-copy {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  &__field-label {
+    margin: 0 0 4px;
+    font-family: 'Mengyuan Heiti W14', 'Mengyuan Heiti', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: $greek-blue;
+  }
+
+  &__field-value {
+    margin: 0;
+    font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: $detail-gray;
+  }
+
+  &__field-divider {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__detail-visual {
+    flex: 0 0 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  &__detail-title {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &__detail-hero {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
   }
 }
 </style>

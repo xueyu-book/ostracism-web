@@ -1,5 +1,8 @@
 <template>
-  <div class="intro-view">
+  <div
+    class="intro-view"
+    :class="{ 'intro-view--project': contentVisible && isProjectModule }"
+  >
     <div
       class="intro-view__bg"
       :class="{ 'intro-view__bg--sliding': wallReady }"
@@ -177,7 +180,9 @@
       class="intro-view__content"
       :class="{
         'intro-view__content--card': isCardModule,
-        'intro-view__content--rule': isRuleModule
+        'intro-view__content--rule': isRuleModule,
+        'intro-view__content--project': isProjectModule,
+        'intro-view__content--menu': isMenuModule
       }"
     >
       <component
@@ -310,6 +315,8 @@ const activeModuleComponent = computed(
 
 const isCardModule = computed(() => activeNav.value === 'card')
 const isRuleModule = computed(() => activeNav.value === 'rule')
+const isProjectModule = computed(() => activeNav.value === 'project')
+const isMenuModule = computed(() => activeNav.value === 'menu')
 const showCardPillars = computed(() => contentVisible.value && isCardModule.value)
 const showDefaultPillars = computed(() => !showCardPillars.value)
 
@@ -923,10 +930,25 @@ $nav-reveal-duration: 0.75s;
     pointer-events: none;
 
     &--card,
-    &--rule {
+    &--rule,
+    &--project,
+    &--menu {
       align-items: flex-start;
       justify-content: center;
     }
+
+    &--project {
+      left: 54px;
+      right: 54px;
+      z-index: 3;
+      overflow: visible;
+    }
+  }
+}
+
+.intro-view--project {
+  .intro-view__pillar {
+    z-index: 1;
   }
 }
 </style>
