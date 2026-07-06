@@ -188,6 +188,7 @@ $card-grid-w: $card-w * 5 + $card-gap-x * 4;
 $card-detail-area-h: 684px;
 $card-detail-w: 1524px;
 $card-detail-h: 464px;
+$card-detail-offset-x: ($card-module-w - $card-detail-w) * 0.5;
 $card-detail-edge: 40px;
 $card-detail-back-gap: 40px;
 $card-detail-back-w: 110px;
@@ -330,7 +331,7 @@ $detail-gray: #959595;
 
   &__back {
     align-self: flex-start;
-    margin-left: ($card-module-w - $card-detail-w) / 2;
+    margin-left: $card-detail-offset-x;
     width: $card-detail-back-w;
     height: $card-detail-back-h;
     padding: 0;

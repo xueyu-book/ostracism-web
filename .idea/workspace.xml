@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/详情页版面.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/返回.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/IntroView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/IntroView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/components/CardModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/CardModule.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/MenuModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/MenuModule.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/ProjectModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/ProjectModule.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1782437730268</updated>
       <workItem from="1782437731367" duration="9249000" />
-      <workItem from="1782786413490" duration="10391000" />
+      <workItem from="1782786413490" duration="11343000" />
     </task>
     <servers />
   </component>
