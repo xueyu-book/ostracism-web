@@ -157,6 +157,29 @@
     </p>
 
     <Teleport to="body">
+      <div
+        v-if="showMobileLandscapeTip"
+        class="intro-view__mobile-tip"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="intro-mobile-tip-title"
+      >
+        <div class="intro-view__mobile-tip-panel">
+          <p id="intro-mobile-tip-title" class="intro-view__mobile-tip-text">
+            建议横屏观看，获得最佳体验
+          </p>
+          <button
+            type="button"
+            class="intro-view__mobile-tip-btn"
+            @click="dismissMobileTip"
+          >
+            我知道了
+          </button>
+        </div>
+      </div>
+    </Teleport>
+
+    <Teleport to="body">
       <img
         v-show="isDragging"
         ref="ghostRef"
@@ -207,7 +230,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch, onBeforeUnmount, nextTick } from 'vue'
+import { ref, reactive, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import letterO from '@/assets/images/home/0_grey.svg'
 import letterS from '@/assets/images/home/1_S.svg'
 import letterT from '@/assets/images/home/2_T.svg'
@@ -367,6 +390,32 @@ function getNavItemStyle(item, index) {
   }
 }
 
+const showMobileLandscapeTip = ref(false)
+let mobileTipDismissed = false
+
+function isMobileDevice() {
+  const ua = navigator.userAgent || navigator.vendor || ''
+  return /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua)
+}
+
+function isPortraitOrientation() {
+  return window.innerHeight >= window.innerWidth
+}
+
+function updateMobileLandscapeTip() {
+  if (mobileTipDismissed) return
+  showMobileLandscapeTip.value = isMobileDevice() && isPortraitOrientation()
+}
+
+function dismissMobileTip() {
+  mobileTipDismissed = true
+  showMobileLandscapeTip.value = false
+}
+
+function onViewportChange() {
+  updateMobileLandscapeTip()
+}
+
 const isDragging = ref(false)
 const totemRef = ref(null)
 const ghostRef = ref(null)
@@ -513,8 +562,16 @@ function onTotemPointerDown(e) {
   addListeners()
 }
 
+onMounted(() => {
+  updateMobileLandscapeTip()
+  window.addEventListener('orientationchange', onViewportChange)
+  window.addEventListener('resize', onViewportChange)
+})
+
 onBeforeUnmount(() => {
   removeListeners()
+  window.removeEventListener('orientationchange', onViewportChange)
+  window.removeEventListener('resize', onViewportChange)
   if (hideTimer !== null) {
     window.clearTimeout(hideTimer)
   }
@@ -987,5 +1044,51 @@ $nav-reveal-duration: 0.75s;
   .intro-view__pillar {
     z-index: 1;
   }
+}
+
+.intro-view__mobile-tip {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6vw;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.intro-view__mobile-tip-panel {
+  width: 86vw;
+  max-width: 86vw;
+  padding: 8vw 6vw;
+  border-radius: 3vw;
+  background: $wall-reveal-bg;
+  text-align: center;
+  box-shadow: 0 3vw 10vw rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.intro-view__mobile-tip-text {
+  margin: 0;
+  font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
+  font-size: 4.8vw;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  color: $greek-blue;
+}
+
+.intro-view__mobile-tip-btn {
+  margin-top: 6vw;
+  padding: 3.5vw 12vw;
+  border: none;
+  border-radius: 2vw;
+  background: $greek-blue;
+  color: #fff;
+  font-family: 'Mengyuan Heiti', sans-serif;
+  font-size: 4.2vw;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
 }
 </style>

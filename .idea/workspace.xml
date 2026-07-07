@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/content/menuContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/menuContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/left_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/left_2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/left_3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/left_4.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/left_5.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/left_6.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/left_7.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/right.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/right.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/right_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/right_2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/right_3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/right_4.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/right_5.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/right_6.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/card/right_7.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/rule/left_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/rule/left_2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/rule/left_3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/rule/right_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/rule/right_2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/nav_pillar/rule/right_3.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/IntroView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/IntroView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/components/MenuModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/MenuModule.vue" afterDir="false" />
     </list>

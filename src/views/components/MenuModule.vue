@@ -1,6 +1,6 @@
 <template>
-  <section class="menu-module">
-    <div class="menu-module__layout">
+  <section class="menu-module" :class="{ 'menu-module--empty': isEmpty }">
+    <div class="menu-module__layout" :class="{ 'menu-module__layout--empty': isEmpty }">
       <div
         ref="listScrollRef"
         class="menu-module__list-scroll"
@@ -118,6 +118,11 @@ $list-gray: #959595;
   box-sizing: border-box;
   pointer-events: auto;
 
+  &--empty {
+    display: flex;
+    justify-content: center;
+  }
+
   &__layout {
     display: flex;
     gap: $menu-hero-gap;
@@ -125,6 +130,11 @@ $list-gray: #959595;
     min-height: 0;
     padding-left: 40px;
     justify-content: flex-start;
+
+    &--empty {
+      padding-left: 0;
+      justify-content: center;
+    }
   }
 
   &__list-scroll {
@@ -141,12 +151,15 @@ $list-gray: #959595;
     }
 
     &--empty {
+      display: flex;
+      align-items: center;
       overflow-y: hidden;
     }
   }
 
   &__empty-text-cn {
-    font-family: 'Source Han Sans SC', 'Noto Sans CJK SC', 'Noto Sans SC', sans-serif;
+    font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
+    font-weight: 400;
     text-transform: none;
   }
 
