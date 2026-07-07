@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="" />
+    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/content/menuContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/menuContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/IntroView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/IntroView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/MenuModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/MenuModule.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -708,7 +708,7 @@ $nav-reveal-duration: 0.75s;
       left: $page-padding;
 
       &.intro-view__pillar--spread {
-        left: $page-padding - $pillar-spread;
+        left: -46px;
       }
     }
 
@@ -718,7 +718,7 @@ $nav-reveal-duration: 0.75s;
       transform-origin: center center;
 
       &.intro-view__pillar--spread {
-        right: $page-padding - $pillar-spread;
+        right: -46px;
       }
     }
   }
@@ -736,19 +736,11 @@ $nav-reveal-duration: 0.75s;
       right $pillar-spread-duration $wall-mechanism-easing;
 
     &--left {
-      left: $page-padding;
-
-      &.intro-view__nav-pillar--spread {
-        left: $page-padding - $pillar-spread;
-      }
+      left: 0;
     }
 
     &--right {
-      right: $page-padding;
-
-      &.intro-view__nav-pillar--spread {
-        right: $page-padding - $pillar-spread;
-      }
+      right: 0;
     }
   }
 

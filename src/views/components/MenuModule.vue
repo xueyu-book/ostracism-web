@@ -146,7 +146,7 @@ $list-gray: #959595;
   }
 
   &__empty-text-cn {
-    // font-family: 'Mengyuan Heiti W14', 'Mengyuan Heiti', sans-serif;
+    font-family: 'Source Han Sans SC', 'Noto Sans CJK SC', 'Noto Sans SC', sans-serif;
     text-transform: none;
   }
 

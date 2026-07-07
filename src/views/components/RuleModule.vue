@@ -71,7 +71,7 @@ function splitTitleCn(text) {
 </script>
 
 <style lang="scss" scoped>
-$rule-module-w: 1612px;
+$rule-module-w: 1500px;
 $rule-module-pt: 40px;
 $rule-module-pb: 40px;
 $greek-blue: #0655bc;
