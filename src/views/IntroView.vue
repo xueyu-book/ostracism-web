@@ -58,35 +58,46 @@
     />
 
     <div
-      v-show="showNavPillars"
-      class="intro-view__nav-pillar intro-view__nav-pillar--left"
-      :class="{ 'intro-view__nav-pillar--spread': pillarsSpread }"
+      v-show="showCardPillars"
+      class="intro-view__nav-pillar-wrap intro-view__nav-pillar-wrap--left"
+      :class="{ 'intro-view__nav-pillar-wrap--spread': pillarsSpread }"
     >
       <div ref="leftPillarScrollRef" class="intro-view__nav-pillar-scroll">
         <img
-          v-for="(src, index) in activePillarLeftIcons"
-          :key="`nav-pillar-left-${activeNav}-${index}`"
-          class="intro-view__nav-pillar-icon"
-          :src="src"
+          class="intro-view__nav-pillar-img"
+          :src="cardPillarLeft"
           alt=""
         />
       </div>
     </div>
     <div
-      v-show="showNavPillars"
-      class="intro-view__nav-pillar intro-view__nav-pillar--right"
-      :class="{ 'intro-view__nav-pillar--spread': pillarsSpread }"
+      v-show="showCardPillars"
+      class="intro-view__nav-pillar-wrap intro-view__nav-pillar-wrap--right"
+      :class="{ 'intro-view__nav-pillar-wrap--spread': pillarsSpread }"
     >
       <div ref="rightPillarScrollRef" class="intro-view__nav-pillar-scroll">
         <img
-          v-for="(src, index) in activePillarRightIcons"
-          :key="`nav-pillar-right-${activeNav}-${index}`"
-          class="intro-view__nav-pillar-icon"
-          :src="src"
+          class="intro-view__nav-pillar-img"
+          :src="cardPillarRight"
           alt=""
         />
       </div>
     </div>
+
+    <img
+      v-show="showRulePillars"
+      class="intro-view__pillar intro-view__pillar--left intro-view__pillar--nav"
+      :class="{ 'intro-view__pillar--spread': pillarsSpread }"
+      :src="rulePillarLeft"
+      alt=""
+    />
+    <img
+      v-show="showRulePillars"
+      class="intro-view__pillar intro-view__pillar--right intro-view__pillar--nav"
+      :class="{ 'intro-view__pillar--spread': pillarsSpread }"
+      :src="rulePillarRight"
+      alt=""
+    />
 
     <img
       v-show="!activated"
@@ -142,7 +153,7 @@
       }"
       :style="{ '--fade-delay': `${fadeDelays.hint}ms` }"
     >
-      接入图腾以激活装置
+      嵌入图腾以激活装置
     </p>
 
     <Teleport to="body">
@@ -211,6 +222,10 @@ import iconRule from '@/assets/images/nav_icon/2_rule.svg?raw'
 import iconProject from '@/assets/images/nav_icon/3_project.svg?raw'
 import iconMenu from '@/assets/images/nav_icon/4_menu.svg?raw'
 import iconProvision from '@/assets/images/nav_icon/5_provision.svg?raw'
+import cardPillarLeft from '@/assets/images/nav_pillar/card/left.svg'
+import cardPillarRight from '@/assets/images/nav_pillar/card/right.svg'
+import rulePillarLeft from '@/assets/images/nav_pillar/rule/left.svg'
+import rulePillarRight from '@/assets/images/nav_pillar/rule/right.svg'
 import { pxToRem } from '@/utils/rem'
 import CardModule from './components/CardModule.vue'
 import RuleModule from './components/RuleModule.vue'
@@ -231,37 +246,6 @@ function withNavSvg(svg) {
     return svg.replace(/preserveAspectRatio="[^"]*"/, 'preserveAspectRatio="none"')
   }
   return svg.replace('<svg', '<svg preserveAspectRatio="none"')
-}
-
-function loadNavPillarIcons(module, side, limit) {
-  const sidePattern = new RegExp(`/${side}_(\\d+)\\.svg$`)
-
-  const icons = Object.entries(
-    import.meta.glob('@/assets/images/nav_pillar/*/*.svg', {
-      eager: true,
-      import: 'default'
-    })
-  )
-    .filter(([path]) => path.includes(`/nav_pillar/${module}/`) && sidePattern.test(path))
-    .sort(([pathA], [pathB]) => {
-      const numA = parseInt(pathA.match(sidePattern)[1], 10)
-      const numB = parseInt(pathB.match(sidePattern)[1], 10)
-      return numA - numB
-    })
-    .map(([, src]) => src)
-
-  return limit != null ? icons.slice(0, limit) : icons
-}
-
-const navPillarIcons = {
-  card: {
-    left: loadNavPillarIcons('card', 'left', 7),
-    right: loadNavPillarIcons('card', 'right', 7)
-  },
-  rule: {
-    left: loadNavPillarIcons('rule', 'left'),
-    right: loadNavPillarIcons('rule', 'right')
-  }
 }
 
 const navItems = [
@@ -330,15 +314,10 @@ const isCardModule = computed(() => activeNav.value === 'card')
 const isRuleModule = computed(() => activeNav.value === 'rule')
 const isProjectModule = computed(() => activeNav.value === 'project')
 const isMenuModule = computed(() => activeNav.value === 'menu')
-const showNavPillars = computed(
-  () => contentVisible.value && (isCardModule.value || isRuleModule.value)
-)
-const showDefaultPillars = computed(() => !showNavPillars.value)
-const activePillarLeftIcons = computed(
-  () => navPillarIcons[activeNav.value]?.left ?? []
-)
-const activePillarRightIcons = computed(
-  () => navPillarIcons[activeNav.value]?.right ?? []
+const showCardPillars = computed(() => contentVisible.value && isCardModule.value)
+const showRulePillars = computed(() => contentVisible.value && isRuleModule.value)
+const showDefaultPillars = computed(
+  () => !showCardPillars.value && !showRulePillars.value
 )
 
 const leftPillarScrollRef = ref(null)
@@ -351,7 +330,7 @@ function resetPillarScroll() {
 }
 
 function syncPillarScroll({ scrollTop, scrollHeight, clientHeight }) {
-  if (!showNavPillars.value) return
+  if (!showCardPillars.value) return
 
   const pillars = [leftPillarScrollRef.value, rightPillarScrollRef.value]
   if (!pillars[0] || !pillars[1]) return
@@ -573,7 +552,6 @@ $soldier-h: 220px;
 $greek-blue: #0655bc;
 $wall-reveal-bg: #efedea;
 $nav-icon-default: #918f81;
-$nav-pillar-w: 154px;
 $nav-bg-scale: 1.2;
 $nav-reveal-duration: 0.75s;
 
@@ -727,26 +705,44 @@ $nav-reveal-duration: 0.75s;
         right: -46px;
       }
     }
+
+    &--nav {
+      width: $pillar-w;
+      height: auto;
+      object-fit: initial;
+    }
+
+    &--nav.intro-view__pillar--right {
+      transform: none;
+      transform-origin: center center;
+    }
   }
 
-  &__nav-pillar {
+  &__nav-pillar-wrap {
     position: absolute;
     top: 0;
-    width: $nav-pillar-w;
-    height: $pillar-h;
-    z-index: 2;
+    width: $pillar-w;
+    height: $design-h;
     overflow: hidden;
-    pointer-events: auto;
+    z-index: 2;
     transition:
       left $pillar-spread-duration $wall-mechanism-easing,
       right $pillar-spread-duration $wall-mechanism-easing;
 
     &--left {
-      left: 0;
+      left: $page-padding;
+
+      &.intro-view__nav-pillar-wrap--spread {
+        left: -46px;
+      }
     }
 
     &--right {
-      right: 0;
+      right: $page-padding;
+
+      &.intro-view__nav-pillar-wrap--spread {
+        right: -46px;
+      }
     }
   }
 
@@ -763,11 +759,10 @@ $nav-reveal-duration: 0.75s;
     }
   }
 
-  &__nav-pillar-icon {
+  &__nav-pillar-img {
     display: block;
-    width: 100%;
+    width: $pillar-w;
     height: auto;
-    flex-shrink: 0;
     user-select: none;
     pointer-events: none;
   }
