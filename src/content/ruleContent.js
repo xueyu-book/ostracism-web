@@ -3,23 +3,23 @@ export const ruleSections = {
   titleCn: '项目规则',
   items: [
     {
-      title: 'I. 登场：',
+      title: 'I. 登场',
       text: '在小红书上与TOHC账号互动（点赞/评论/收藏/私信/甚至拉黑），记为申请加入玩家名单。'
     },
     {
-      title: 'II. 赞歌：',
+      title: 'II. 赞歌',
       text: 'TOHC将主动与被选中的玩家联系。'
     },
     {
-      title: 'III. 犒赏：',
+      title: 'III. 犒赏',
       text: '玩家收到驱逐陶盒，摔碎它！拿到里面的会员卡。'
     },
     {
-      title: 'IV. 驱逐：',
+      title: 'IV. 驱逐',
       text: '收到陶盒8H内，玩家将在TOHC自有账号及平台上被驱逐拉黑。'
     },
     {
-      title: 'V. 新生：',
+      title: 'V. 新生',
       text: '玩家使用卡中积分/权益/金额，成为另一品牌的冒牌会员。'
     }
   ]

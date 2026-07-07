@@ -1,22 +1,42 @@
 <template>
   <section class="menu-module">
     <div class="menu-module__layout">
-      <div class="menu-module__list-scroll">
-        <article
-          v-for="(entry, index) in exileList"
-          :key="`${entry.id}-${index}`"
-          class="menu-module__entry"
-        >
+      <div
+        ref="listScrollRef"
+        class="menu-module__list-scroll"
+        :class="{ 'menu-module__list-scroll--empty': isEmpty }"
+        @mouseenter="isHovering = true"
+        @mouseleave="isHovering = false"
+      >
+        <article v-if="isEmpty" class="menu-module__entry">
           <p class="menu-module__entry-text">
-            {{ entry.id }} / {{ entry.name }} / {{ entry.location }}
+            {{ menuEmptyState.titleEn }}
+            <span class="menu-module__empty-text-cn">{{ menuEmptyState.titleCn }}</span>
           </p>
           <img
-            v-if="index < exileList.length - 1"
             class="menu-module__entry-line"
             src="@/assets/images/nav_pillar/menu/line.svg"
             alt=""
           />
         </article>
+
+        <template v-else>
+          <article
+            v-for="(entry, index) in scrollList"
+            :key="`${entry.id}-${index}`"
+            class="menu-module__entry"
+          >
+            <p class="menu-module__entry-text">
+              {{ entry.id }} / {{ entry.name }} / {{ entry.location }}
+            </p>
+            <img
+              v-if="index < scrollList.length - 1"
+              class="menu-module__entry-line"
+              src="@/assets/images/nav_pillar/menu/line.svg"
+              alt=""
+            />
+          </article>
+        </template>
       </div>
 
       <div class="menu-module__hero">
@@ -25,17 +45,61 @@
           src="@/assets/images/nav_pillar/menu/hero.svg"
           alt=""
         />
-        <div class="menu-module__hero-copy">
-          <h2 class="menu-module__hero-title-en">{{ menuHero.titleEn }}</h2>
-          <p class="menu-module__hero-title-cn">{{ menuHero.titleCn }}</p>
-        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { exileList, menuHero } from '@/content/menuContent'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { exileList, menuEmptyState } from '@/content/menuContent'
+
+const SCROLL_SPEED = 0.35
+
+const listScrollRef = ref(null)
+const isHovering = ref(false)
+const isEmpty = computed(() => exileList.length === 0)
+const scrollList = computed(() => [...exileList, ...exileList])
+
+let rafId = null
+
+function tick() {
+  const el = listScrollRef.value
+  if (el && !isHovering.value) {
+    const loopHeight = el.scrollHeight / 2
+    if (loopHeight > el.clientHeight) {
+      el.scrollTop += SCROLL_SPEED
+      if (el.scrollTop >= loopHeight) {
+        el.scrollTop -= loopHeight
+      }
+    }
+  }
+  rafId = requestAnimationFrame(tick)
+}
+
+function startAutoScroll() {
+  stopAutoScroll()
+  nextTick(() => {
+    if (listScrollRef.value) {
+      listScrollRef.value.scrollTop = 0
+    }
+    rafId = requestAnimationFrame(tick)
+  })
+}
+
+function stopAutoScroll() {
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId)
+    rafId = null
+  }
+}
+
+onMounted(() => {
+  if (!isEmpty.value) {
+    startAutoScroll()
+  }
+})
+onBeforeUnmount(stopAutoScroll)
 </script>
 
 <style lang="scss" scoped>
@@ -75,6 +139,15 @@ $list-gray: #959595;
     &::-webkit-scrollbar {
       display: none;
     }
+
+    &--empty {
+      overflow-y: hidden;
+    }
+  }
+
+  &__empty-text-cn {
+    // font-family: 'Mengyuan Heiti W14', 'Mengyuan Heiti', sans-serif;
+    text-transform: none;
   }
 
   &__entry {

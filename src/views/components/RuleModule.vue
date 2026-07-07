@@ -75,7 +75,7 @@ $rule-module-w: 1612px;
 $rule-module-pt: 40px;
 $rule-module-pb: 40px;
 $greek-blue: #0655bc;
-$text-black: #000;
+$text-black: #959595;
 
 .rule-module {
   width: $rule-module-w;

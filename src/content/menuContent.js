@@ -3,6 +3,11 @@ export const menuHero = {
   titleCn: '被放逐者名单'
 }
 
+export const menuEmptyState = {
+  titleEn: 'COMING SOON',
+  titleCn: '稍后呈现'
+}
+
 export const exileList = [
   { id: '001', name: 'ACHILLES', location: 'PHTHIATHESSALY' },
   { id: '002', name: 'HECTOR', location: 'TROY' },

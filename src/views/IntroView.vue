@@ -58,14 +58,14 @@
     />
 
     <div
-      v-show="showCardPillars"
+      v-show="showNavPillars"
       class="intro-view__nav-pillar intro-view__nav-pillar--left"
       :class="{ 'intro-view__nav-pillar--spread': pillarsSpread }"
     >
       <div ref="leftPillarScrollRef" class="intro-view__nav-pillar-scroll">
         <img
-          v-for="(src, index) in cardPillarLeftIcons"
-          :key="`card-pillar-left-${index}`"
+          v-for="(src, index) in activePillarLeftIcons"
+          :key="`nav-pillar-left-${activeNav}-${index}`"
           class="intro-view__nav-pillar-icon"
           :src="src"
           alt=""
@@ -73,14 +73,14 @@
       </div>
     </div>
     <div
-      v-show="showCardPillars"
+      v-show="showNavPillars"
       class="intro-view__nav-pillar intro-view__nav-pillar--right"
       :class="{ 'intro-view__nav-pillar--spread': pillarsSpread }"
     >
       <div ref="rightPillarScrollRef" class="intro-view__nav-pillar-scroll">
         <img
-          v-for="(src, index) in cardPillarRightIcons"
-          :key="`card-pillar-right-${index}`"
+          v-for="(src, index) in activePillarRightIcons"
+          :key="`nav-pillar-right-${activeNav}-${index}`"
           class="intro-view__nav-pillar-icon"
           :src="src"
           alt=""
@@ -172,6 +172,7 @@
         @click="onNavClick(item.id)"
       >
         <span class="intro-view__nav-icon" v-html="item.svg" aria-hidden="true" />
+        <span class="intro-view__nav-tooltip">{{ item.label }}</span>
       </button>
     </nav>
 
@@ -232,25 +233,36 @@ function withNavSvg(svg) {
   return svg.replace('<svg', '<svg preserveAspectRatio="none"')
 }
 
-function loadNavPillarIcons(side, limit) {
-  return Object.entries(
-    import.meta.glob('@/assets/images/nav_pillar/card/*.svg', {
+function loadNavPillarIcons(module, side, limit) {
+  const sidePattern = new RegExp(`/${side}_(\\d+)\\.svg$`)
+
+  const icons = Object.entries(
+    import.meta.glob('@/assets/images/nav_pillar/*/*.svg', {
       eager: true,
       import: 'default'
     })
   )
-    .filter(([path]) => new RegExp(`/${side}_\\d+\\.svg$`).test(path))
+    .filter(([path]) => path.includes(`/nav_pillar/${module}/`) && sidePattern.test(path))
     .sort(([pathA], [pathB]) => {
-      const numA = parseInt(pathA.match(new RegExp(`${side}_(\\d+)`))[1], 10)
-      const numB = parseInt(pathB.match(new RegExp(`${side}_(\\d+)`))[1], 10)
+      const numA = parseInt(pathA.match(sidePattern)[1], 10)
+      const numB = parseInt(pathB.match(sidePattern)[1], 10)
       return numA - numB
     })
-    .slice(0, limit)
     .map(([, src]) => src)
+
+  return limit != null ? icons.slice(0, limit) : icons
 }
 
-const cardPillarLeftIcons = loadNavPillarIcons('left', 7)
-const cardPillarRightIcons = loadNavPillarIcons('right', 7)
+const navPillarIcons = {
+  card: {
+    left: loadNavPillarIcons('card', 'left', 7),
+    right: loadNavPillarIcons('card', 'right', 7)
+  },
+  rule: {
+    left: loadNavPillarIcons('rule', 'left'),
+    right: loadNavPillarIcons('rule', 'right')
+  }
+}
 
 const navItems = [
   { id: 'card', label: '卡片展示', svg: withNavSvg(iconCard), top: 65, left: 220, width: 46, height: 64 },
@@ -289,7 +301,7 @@ const titleLettersRest = [
 
 const HIDE_DURATION = 600
 const HIDE_STAGGER = 280
-const WALL_SLIDE_DURATION_MS = 1200
+const WALL_SLIDE_DURATION_MS = 2000
 const NAV_REVEAL_STAGGER_MS = 180
 const NAV_REVEAL_DURATION_MS = 750
 
@@ -317,8 +329,16 @@ const isCardModule = computed(() => activeNav.value === 'card')
 const isRuleModule = computed(() => activeNav.value === 'rule')
 const isProjectModule = computed(() => activeNav.value === 'project')
 const isMenuModule = computed(() => activeNav.value === 'menu')
-const showCardPillars = computed(() => contentVisible.value && isCardModule.value)
-const showDefaultPillars = computed(() => !showCardPillars.value)
+const showNavPillars = computed(
+  () => contentVisible.value && (isCardModule.value || isRuleModule.value)
+)
+const showDefaultPillars = computed(() => !showNavPillars.value)
+const activePillarLeftIcons = computed(
+  () => navPillarIcons[activeNav.value]?.left ?? []
+)
+const activePillarRightIcons = computed(
+  () => navPillarIcons[activeNav.value]?.right ?? []
+)
 
 const leftPillarScrollRef = ref(null)
 const rightPillarScrollRef = ref(null)
@@ -330,13 +350,13 @@ function resetPillarScroll() {
 }
 
 function syncPillarScroll({ scrollTop, scrollHeight, clientHeight }) {
-  if (!showCardPillars.value) return
+  if (!showNavPillars.value) return
 
   const pillars = [leftPillarScrollRef.value, rightPillarScrollRef.value]
   if (!pillars[0] || !pillars[1]) return
 
-  const cardMaxScroll = Math.max(scrollHeight - clientHeight, 0)
-  const ratio = cardMaxScroll > 0 ? scrollTop / cardMaxScroll : 0
+  const contentMaxScroll = Math.max(scrollHeight - clientHeight, 0)
+  const ratio = contentMaxScroll > 0 ? scrollTop / contentMaxScroll : 0
 
   pillars.forEach((el) => {
     const maxScroll = Math.max(el.scrollHeight - el.clientHeight, 0)
@@ -344,10 +364,8 @@ function syncPillarScroll({ scrollTop, scrollHeight, clientHeight }) {
   })
 }
 
-watch(isCardModule, (card) => {
-  if (!card) {
-    resetPillarScroll()
-  }
+watch(activeNav, () => {
+  resetPillarScroll()
 })
 
 function onNavClick(id) {
@@ -531,7 +549,8 @@ $page-padding: 36px;
 $pillar-w: 200px;
 $pillar-h: 1080px;
 $pillar-spread: 80px;
-$spread-slide-duration: 1.2s;
+$spread-slide-duration: 2s;
+$wall-mechanism-easing: cubic-bezier(0.58, 0, 0.72, 0.82);
 $pillar-spread-duration: $spread-slide-duration;
 $design-w: 1920px;
 $design-h: 1080px;
@@ -556,12 +575,10 @@ $nav-reveal-duration: 0.75s;
   0%,
   100% {
     opacity: 1;
-    transform: translate(0, 0);
   }
 
   50% {
     opacity: 0.45;
-    transform: translate(14px, -12px);
   }
 }
 
@@ -612,7 +629,7 @@ $nav-reveal-duration: 0.75s;
     line-height: 0;
     font-size: 0;
     will-change: transform;
-    transition: transform $wall-slide-duration ease-in-out;
+    transition: transform $wall-slide-duration $wall-mechanism-easing;
 
     &--top {
       top: 0;
@@ -684,8 +701,8 @@ $nav-reveal-duration: 0.75s;
     user-select: none;
     z-index: 2;
     transition:
-      left $pillar-spread-duration ease-in-out,
-      right $pillar-spread-duration ease-in-out;
+      left $pillar-spread-duration $wall-mechanism-easing,
+      right $pillar-spread-duration $wall-mechanism-easing;
 
     &--left {
       left: $page-padding;
@@ -715,8 +732,8 @@ $nav-reveal-duration: 0.75s;
     overflow: hidden;
     pointer-events: auto;
     transition:
-      left $pillar-spread-duration ease-in-out,
-      right $pillar-spread-duration ease-in-out;
+      left $pillar-spread-duration $wall-mechanism-easing,
+      right $pillar-spread-duration $wall-mechanism-easing;
 
     &--left {
       left: $page-padding;
@@ -899,6 +916,33 @@ $nav-reveal-duration: 0.75s;
     &--active {
       color: $greek-blue;
     }
+
+    &--revealed:hover .intro-view__nav-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  &__nav-tooltip {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%) translateY(-4px);
+    padding: 4px 10px;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: 'Mengyuan Heiti', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
   }
 
   &__nav-icon {

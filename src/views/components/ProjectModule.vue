@@ -121,9 +121,9 @@ $project-deco-edge-offset: -5px;
 $project-footer-title-h: 96px;
 $project-footer-title-bottom: 30px;
 $project-body-footer-gap: 260px;
-$project-paragraph-gap: 60px;
+$project-paragraph-gap: 30px;
 $greek-blue: #0655bc;
-$text-color: #888888;
+$text-color: #959595;
 
 .project-module {
   width: $project-module-w;
@@ -317,7 +317,7 @@ $text-color: #888888;
   &__paragraph {
     margin: 0;
     font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
-    font-size: 36px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 1.45;
     color: $text-color;
@@ -337,7 +337,7 @@ $text-color: #888888;
   &__quote {
     margin: 20px 0 0;
     font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
-    font-size: 36px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 1.45;
     color: $text-color;
@@ -346,7 +346,7 @@ $text-color: #888888;
   &__tagline {
     margin: 20px 0 0;
     font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
-    font-size: 36px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 1.45;
     color: $text-color;
