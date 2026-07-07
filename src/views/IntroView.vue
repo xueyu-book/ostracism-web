@@ -162,20 +162,20 @@
         class="intro-view__mobile-tip"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="intro-mobile-tip-title"
+        aria-label="建议横屏观看，获得最佳体验"
       >
-        <div class="intro-view__mobile-tip-panel">
-          <p id="intro-mobile-tip-title" class="intro-view__mobile-tip-text">
-            建议横屏观看，获得最佳体验
-          </p>
-          <button
-            type="button"
-            class="intro-view__mobile-tip-btn"
-            @click="dismissMobileTip"
-          >
-            我知道了
-          </button>
-        </div>
+        <button
+          type="button"
+          class="intro-view__mobile-tip-panel"
+          aria-label="建议横屏观看，获得最佳体验"
+          @click="dismissMobileTip"
+        >
+          <img
+            class="intro-view__mobile-tip-img"
+            src="@/assets/images/home/dialog_bg.svg"
+            alt="建议横屏观看，获得最佳体验"
+          />
+        </button>
       </div>
     </Teleport>
 
@@ -1058,37 +1058,21 @@ $nav-reveal-duration: 0.75s;
 }
 
 .intro-view__mobile-tip-panel {
-  width: 86vw;
-  max-width: 86vw;
-  padding: 8vw 6vw;
-  border-radius: 3vw;
-  background: $wall-reveal-bg;
-  text-align: center;
-  box-shadow: 0 3vw 10vw rgba(0, 0, 0, 0.2);
+  display: block;
+  width: 88vw;
+  max-width: 88vw;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
   box-sizing: border-box;
 }
 
-.intro-view__mobile-tip-text {
-  margin: 0;
-  font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
-  font-size: 4.8vw;
-  font-weight: 400;
-  line-height: 1.55;
-  letter-spacing: 0.04em;
-  color: $greek-blue;
-}
-
-.intro-view__mobile-tip-btn {
-  margin-top: 6vw;
-  padding: 3.5vw 12vw;
-  border: none;
-  border-radius: 2vw;
-  background: $greek-blue;
-  color: #fff;
-  font-family: 'Mengyuan Heiti', sans-serif;
-  font-size: 4.2vw;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  cursor: pointer;
+.intro-view__mobile-tip-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
 }
 </style>
