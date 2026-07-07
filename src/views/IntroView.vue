@@ -284,7 +284,8 @@ const navItems = [
     top: 65,
     left: 552,
     width: 54,
-    height: 66
+    height: 66,
+    externalUrl: 'https://ketchupormakeup.com/terms-and-conditions.pdf'
   }
 ]
 
@@ -369,6 +370,11 @@ watch(activeNav, () => {
 })
 
 function onNavClick(id) {
+  const item = navItems.find((nav) => nav.id === id)
+  if (item?.externalUrl) {
+    window.open(item.externalUrl, '_blank', 'noopener,noreferrer')
+    return
+  }
   activeNav.value = id
 }
 
