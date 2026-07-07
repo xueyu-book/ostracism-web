@@ -240,9 +240,9 @@ $detail-gray: #959595;
 
   &__item {
     width: $card-w;
-    height: $card-h;
     padding: 0;
     border: none;
+    border-radius: 8px;
     background: none;
     cursor: pointer;
     overflow: hidden;
@@ -283,7 +283,6 @@ $detail-gray: #959595;
     right: 0;
     bottom: 0;
     width: $card-detail-img-w;
-    height: $card-detail-img-h;
     object-fit: cover;
     user-select: none;
     pointer-events: none;

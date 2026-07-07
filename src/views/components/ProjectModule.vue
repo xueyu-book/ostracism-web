@@ -62,6 +62,7 @@
             v-for="(paragraph, index) in projectParagraphs"
             :key="`project-paragraph-${index}`"
             class="project-module__paragraph"
+            :class="{ 'project-module__paragraph--lead': index === 0 }"
           >
             {{ paragraph }}
           </p>
@@ -121,7 +122,7 @@ $project-deco-edge-offset: -5px;
 $project-footer-title-h: 96px;
 $project-footer-title-bottom: 30px;
 $project-body-footer-gap: 260px;
-$project-paragraph-gap: 30px;
+$project-paragraph-gap: 25px;
 $greek-blue: #0655bc;
 $text-color: #959595;
 
@@ -323,6 +324,10 @@ $text-color: #959595;
     color: $text-color;
     text-align: left;
     text-indent: 2em;
+
+    &--lead {
+      font-family: 'Mengyuan Heiti W14', 'Mengyuan Heiti', sans-serif;
+    }
 
     & + & {
       margin-top: $project-paragraph-gap;
