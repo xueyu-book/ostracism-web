@@ -4,103 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_11.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_12.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_13.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_13.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_14.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_14.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_15.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_15.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_16.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_16.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_17.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_17.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_18.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_18.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_19.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_19.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_20.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_20.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_21.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_21.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_22.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_22.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_23.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_23.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_24.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_24.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_25.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_25.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_26.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_26.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_27.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_27.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_28.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_28.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_29.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_29.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_30.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_30.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_31.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_31.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_32.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_32.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_33.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_33.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_34.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_34.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_35.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_35.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_36.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_36.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_37.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_37.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_38.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_38.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_39.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_39.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_40.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_40.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_41.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_41.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_42.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_42.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_43.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_43.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_44.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_44.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_45.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_45.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_46.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_46.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_47.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_47.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_48.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_48.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_49.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_49.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_50.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_50.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_51.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_51.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_52.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_52.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_53.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_53.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_54.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_54.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_55.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_55.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_56.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_56.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_57.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_57.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_58.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_58.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_59.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_59.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_60.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_60.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_61.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_61.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_62.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_62.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_63.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_63.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_64.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_64.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_65.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_65.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_66.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_66.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_67.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_67.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_68.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_68.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_69.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_69.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_70.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_70.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_71.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_71.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_72.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_72.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_73.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_73.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_74.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_74.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_75.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_75.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_76.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_76.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_77.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_77.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_78.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_78.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_79.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_79.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_8.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_80.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_80.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_81.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_81.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_82.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_82.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_83.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_83.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_84.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_84.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_85.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_85.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_86.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_86.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_87.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_87.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_88.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_88.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_89.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_89.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_90.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_90.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/cardDetailContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/cardDetailContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/projectContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/projectContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/ruleContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/ruleContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/CardModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/CardModule.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/ProjectModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/ProjectModule.vue" afterDir="false" />
-    </list>
+    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,7 +51,7 @@
       <option name="presentableId" value="Default" />
       <updated>1782437730268</updated>
       <workItem from="1782437731367" duration="9249000" />
-      <workItem from="1782786413490" duration="12629000" />
+      <workItem from="1782786413490" duration="14437000" />
     </task>
     <servers />
   </component>
