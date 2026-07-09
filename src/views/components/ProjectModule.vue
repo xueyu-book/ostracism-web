@@ -72,13 +72,13 @@
               {{ paragraph }}
             </p>
           </div>
-        </div>
 
-        <footer class="project-module__closing">
-          <p class="project-module__paragraph">{{ projectClosing.intro }}</p>
-          <p class="project-module__quote">{{ projectClosing.quote }}</p>
-          <p class="project-module__tagline">{{ projectClosing.tagline }}</p>
-        </footer>
+          <div class="project-module__paragraph-group project-module__paragraph-group--closing">
+            <p class="project-module__paragraph">{{ projectClosing.intro }}</p>
+            <p class="project-module__quote">{{ projectClosing.quote }}</p>
+            <p class="project-module__tagline">{{ projectClosing.tagline }}</p>
+          </div>
+        </div>
       </div>
 
       <div class="project-module__side-icon project-module__side-icon--left" aria-hidden="true">
@@ -106,17 +106,7 @@
 </template>
 
 <script setup>
-import { projectHero, projectParagraphs, projectClosing } from '@/content/projectContent'
-
-function chunkBySize(items, size) {
-  const groups = []
-  for (let i = 0; i < items.length; i += size) {
-    groups.push(items.slice(i, i + size))
-  }
-  return groups
-}
-
-const projectParagraphGroups = chunkBySize(projectParagraphs, 3)
+import { projectHero, projectParagraphGroups, projectClosing } from '@/content/projectContent'
 </script>
 
 <style lang="scss" scoped>
@@ -337,6 +327,13 @@ $text-color: #959595;
     & + & {
       margin-top: $project-paragraph-group-gap;
     }
+
+    &--closing {
+      .project-module__quote,
+      .project-module__tagline {
+        margin: $project-paragraph-gap 0 0;
+      }
+    }
   }
 
   &__paragraph {
@@ -357,14 +354,8 @@ $text-color: #959595;
     }
   }
 
-  &__closing {
-    max-width: 1180px;
-    margin: 28px auto 0;
-    text-align: center;
-  }
-
   &__quote {
-    margin: 12px 0 0;
+    margin: 0;
     font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -374,7 +365,7 @@ $text-color: #959595;
   }
 
   &__tagline {
-    margin: 12px 0 0;
+    margin: 0;
     font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
     font-size: 18px;
     font-weight: 400;

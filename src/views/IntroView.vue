@@ -184,6 +184,7 @@
         v-show="isDragging"
         ref="ghostRef"
         class="intro-view__totem-ghost"
+        :class="{ 'intro-view__totem-ghost--snapping': isSnapping }"
         :style="ghostStyle"
         src="@/assets/images/home/0_active.svg"
         alt=""
@@ -417,8 +418,11 @@ function onViewportChange() {
 }
 
 const DROP_ZONE_TOLERANCE = 10
+const TOTEM_SNAP_DURATION_MS = 300
+const TOTEM_SNAP_PAUSE_MS = 1000
 
 const isDragging = ref(false)
+const isSnapping = ref(false)
 const totemRef = ref(null)
 const ghostRef = ref(null)
 const dropTargetRef = ref(null)
@@ -436,6 +440,7 @@ let originX = 0
 let originY = 0
 let activePointerId = null
 let hideTimer = null
+let snapTimer = null
 let navRevealTimer = null
 let contentRevealTimer = null
 
@@ -507,6 +512,44 @@ function onPointerMove(e) {
   updateGhostPosition(e.clientX, e.clientY)
 }
 
+function snapGhostToDropTarget(dropTarget) {
+  const zoneRect = dropTarget.getBoundingClientRect()
+
+  ghostStyle.left = `${zoneRect.left}px`
+  ghostStyle.top = `${zoneRect.top}px`
+  ghostStyle.width = `${zoneRect.width}px`
+  ghostStyle.height = `${zoneRect.height}px`
+}
+
+function clearSnapTimer() {
+  if (snapTimer !== null) {
+    window.clearTimeout(snapTimer)
+    snapTimer = null
+  }
+}
+
+function completeTotemSnap() {
+  clearSnapTimer()
+  isDragging.value = false
+  isSnapping.value = false
+  triggerHide()
+}
+
+function startTotemSnap(dropTarget) {
+  clearSnapTimer()
+  isSnapping.value = true
+
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      snapGhostToDropTarget(dropTarget)
+      snapTimer = window.setTimeout(
+        completeTotemSnap,
+        TOTEM_SNAP_DURATION_MS + TOTEM_SNAP_PAUSE_MS
+      )
+    })
+  })
+}
+
 function onPointerUp(e) {
   if (!isDragging.value || e.pointerId !== activePointerId) return
 
@@ -522,7 +565,8 @@ function onPointerUp(e) {
   const ghost = ghostRef.value
 
   if (dropTarget && ghost && isInDropZone(ghost, dropTarget)) {
-    triggerHide()
+    startTotemSnap(dropTarget)
+    return
   }
 
   isDragging.value = false
@@ -541,7 +585,7 @@ function removeListeners() {
 }
 
 function onTotemPointerDown(e) {
-  if (activated.value || isHiding.value || isDragging.value) return
+  if (activated.value || isHiding.value || isDragging.value || isSnapping.value) return
 
   const totem = totemRef.value
   if (!totem) return
@@ -584,6 +628,7 @@ onBeforeUnmount(() => {
   if (contentRevealTimer !== null) {
     window.clearTimeout(contentRevealTimer)
   }
+  clearSnapTimer()
 })
 </script>
 
@@ -614,6 +659,7 @@ $wall-reveal-bg: #efedea;
 $nav-icon-default: #918f81;
 $nav-bg-scale: 1.2;
 $nav-reveal-duration: 0.75s;
+$totem-snap-duration: 0.3s;
 
 @keyframes intro-totem-pulse {
   0%,
@@ -862,6 +908,16 @@ $nav-reveal-duration: 0.75s;
     touch-action: none;
     cursor: grabbing;
     filter: drop-shadow(0 6px 18px rgba($greek-blue, 0.45));
+
+    &--snapping {
+      transition:
+        left $totem-snap-duration cubic-bezier(0.22, 1, 0.36, 1),
+        top $totem-snap-duration cubic-bezier(0.22, 1, 0.36, 1),
+        width $totem-snap-duration cubic-bezier(0.22, 1, 0.36, 1),
+        height $totem-snap-duration cubic-bezier(0.22, 1, 0.36, 1),
+        filter $totem-snap-duration ease-out;
+      filter: drop-shadow(0 2px 8px rgba($greek-blue, 0.25));
+    }
   }
 
   &__soldier {

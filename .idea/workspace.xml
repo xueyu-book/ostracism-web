@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/content/cardDetailContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/cardDetailContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/CardModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/CardModule.vue" afterDir="false" />
-    </list>
+    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +51,7 @@
       <option name="presentableId" value="Default" />
       <updated>1782437730268</updated>
       <workItem from="1782437731367" duration="9249000" />
-      <workItem from="1782786413490" duration="18080000" />
+      <workItem from="1782786413490" duration="19355000" />
     </task>
     <servers />
   </component>

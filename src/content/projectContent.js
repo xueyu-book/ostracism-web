@@ -16,6 +16,12 @@ export const projectParagraphs = [
   '消费者，塑料卡片和碎陶片一样，数量众多且几乎免费，唯一有价值的是附着其上的身份印记。成为一位冒牌会员，享受名副其实的个人自由......（或许吧？）'
 ]
 
+export const projectParagraphGroups = [
+  projectParagraphs.slice(0, 4),
+  projectParagraphs.slice(4, 7),
+  projectParagraphs.slice(7, 10)
+]
+
 export const projectClosing = {
   intro: '在被数据喂养的超商业化社会里，比“我是谁”更常出现的哲学问题是：',
   quote: '“今天，我允许谁成为我？”',
