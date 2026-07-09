@@ -283,7 +283,7 @@ $detail-gray: #959595;
     width: $card-w;
     padding: 0;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     background: none;
     cursor: pointer;
     overflow: hidden;
@@ -338,7 +338,7 @@ $detail-gray: #959595;
     bottom: 0;
     width: $card-detail-img-w;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 14px;
     user-select: none;
     pointer-events: none;
   }

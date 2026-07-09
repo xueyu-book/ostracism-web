@@ -627,7 +627,7 @@ export const cardDetails = {
   78: {
     identity: '爱尔兰学生',
     scope: '爱尔兰',
-    benefits: '余额：15欧\n优惠乘坐爱尔兰公共交通\n进入NED College上课',
+    benefits: '余额：15欧\n优惠乘坐爱尔兰公共交通进入NED College上课',
     expiry: '2027.12.31',
     difficulty: '正常',
     difficultyLevel: 'mid'
@@ -682,7 +682,7 @@ export const cardDetails = {
   },
   85: {
     identity: '？玩家',
-    scope: '澳大利亚-悉尼&黄金海岸&布里斯班',
+    scope: '澳大利亚\n悉尼&黄金海岸&布里斯班',
     benefits: '？',
     expiry: '长期',
     difficulty: '困难',

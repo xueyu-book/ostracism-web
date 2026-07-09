@@ -5,42 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_12.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_13.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_13.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_15.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_15.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_21.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_21.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_22.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_22.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_24.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_24.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_28.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_28.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_31.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_31.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_33.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_33.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_40.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_40.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_45.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_45.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_48.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_48.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_49.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_49.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_63.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_63.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card/card_9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/back.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/card_detail/back.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/benefits.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/connector.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/difficulty.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/divider.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/expiry.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/hero_high.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/hero_low.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/hero_mid.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/identity.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/scope.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/card_detail/title.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/content/cardDetailContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/cardDetailContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/projectContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/projectContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/IntroView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/IntroView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/components/CardModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/CardModule.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/ProjectModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/ProjectModule.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1782437730268</updated>
       <workItem from="1782437731367" duration="9249000" />
-      <workItem from="1782786413490" duration="16811000" />
+      <workItem from="1782786413490" duration="18080000" />
     </task>
     <servers />
   </component>
