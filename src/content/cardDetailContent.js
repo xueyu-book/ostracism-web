@@ -43,7 +43,7 @@ export const cardDetails = {
   5: {
     identity: '屈臣氏VIP',
     scope: '中国内地',
-    benefits: '积分抵现&生日礼遇&会员专享价&会员专属活动，免费门店服务&优先购买权',
+    benefits: '积分抵现&生日礼遇&会员专享价等多项会员服务',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -51,14 +51,14 @@ export const cardDetails = {
   6: {
     identity: '杭州青少年活动中心学员',
     scope: '浙江-杭州',
-    benefits: '余额：50\n游玩杭州多个青少年活动中心项目',
+    benefits: '余额：50元\n游玩杭州多个青少年活动中心项目',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
   },
   7: {
     identity: '持卡乘客',
-    scope: '台湾',
+    scope: '中国台湾',
     benefits: '余额：154台币\n乘坐公共交通工具&更多城市消费',
     expiry: '长期',
     difficulty: '简易',
@@ -75,7 +75,7 @@ export const cardDetails = {
   9: {
     identity: '好利来',
     scope: '全国通用',
-    benefits: '余额：100',
+    benefits: '余额：100元',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -131,7 +131,7 @@ export const cardDetails = {
   16: {
     identity: '群建星城小区居民',
     scope: '武汉-武昌',
-    benefits: '余额：60+\n使用天天一泉机器打水',
+    benefits: '余额：≥60元\n使用天天一泉机器打水',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -147,7 +147,7 @@ export const cardDetails = {
   18: {
     identity: '海口白沙门游乐园玩家',
     scope: '海南-海口',
-    benefits: '余额：250\n游玩游乐园项目',
+    benefits: '余额：250元\n游玩游乐园项目',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -162,7 +162,7 @@ export const cardDetails = {
   },
   20: {
     identity: '福奈特洗衣会员',
-    scope: '全国',
+    scope: '全国通用',
     benefits: '余额：200元\n线下门店消费',
     expiry: '2028.5.31',
     difficulty: '简易',
@@ -193,7 +193,7 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   24: {
-    identity: '丑小鸭沙龙护肤养身\nSPA会员',
+    identity: '丑小鸭沙龙会员',
     scope: '浙江-衢州江山',
     benefits: '在天余小区分店免费剪发三次',
     expiry: '2027.1.1',
@@ -219,7 +219,7 @@ export const cardDetails = {
   27: {
     identity: '太阳岛度假酒店\n娱乐会员',
     scope: '上海',
-    benefits: '余额：200\n娱乐项目消费',
+    benefits: '余额：200元\n娱乐项目消费',
     expiry: '2043',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -267,7 +267,7 @@ export const cardDetails = {
   33: {
     identity: '碧津公园游乐玩家',
     scope: '重庆',
-    benefits: '余额：95-105',
+    benefits: '余额：≥95元',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -313,9 +313,9 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   39: {
-    identity: '独居养宠人',
+    identity: '格里芬国际物流会员',
     scope: '全球通用',
-    benefits: '留守宠物守护',
+    benefits: '突发意外时，向第三方传递\n自家宠物待救信息及联络渠道',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -339,7 +339,7 @@ export const cardDetails = {
   42: {
     identity: '常青藤食品贵宾',
     scope: '江苏-南京',
-    benefits: '直营店九折消费',
+    benefits: '直营店9折消费',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -355,7 +355,7 @@ export const cardDetails = {
   44: {
     identity: '海宇鞋业贵宾',
     scope: '山东-潍坊高密',
-    benefits: '余额：50\n店内消费',
+    benefits: '余额：50元\n店内消费',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -363,15 +363,15 @@ export const cardDetails = {
   45: {
     identity: '持卡乘客',
     scope: '安徽-合肥',
-    benefits: '线下充值八折&乘坐公共交通工具',
+    benefits: '线下充值8折&乘坐公共交通工具',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
   },
   46: {
     identity: '大玩家超乐场会员',
-    scope: '中国内地',
-    benefits: '余额：50币\n积分兑换',
+    scope: '全国通用',
+    benefits: '余额：50币\n游玩电玩&积分兑换',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -379,7 +379,7 @@ export const cardDetails = {
   47: {
     identity: '平凉市现代书城读者',
     scope: '甘肃-平凉',
-    benefits: '余额：50',
+    benefits: '余额：50元',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -395,7 +395,7 @@ export const cardDetails = {
   49: {
     identity: '百果园会员',
     scope: '全国通用',
-    benefits: '余额：100\n线下门店消费',
+    benefits: '余额：100元\n线下门店消费',
     expiry: '2045.9.30',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -427,7 +427,7 @@ export const cardDetails = {
   53: {
     identity: '张家口学院平门校区师生',
     scope: '河北-张家口',
-    benefits: '余额：17\n澡堂洗澡',
+    benefits: '余额：17元\n澡堂洗澡',
     expiry: '长期',
     difficulty: '正常',
     difficultyLevel: 'mid'
@@ -449,8 +449,8 @@ export const cardDetails = {
     difficultyLevel: 'mid'
   },
   56: {
-    identity: '中国农业科学院哈尔滨\n兽医研究所工作人员',
-    scope: '哈尔滨',
+    identity: '农业科学院哈尔滨\n兽医研究所工作人员',
+    scope: '黑龙江-哈尔滨',
     benefits: '余额：？\n在研究所打水',
     expiry: '长期',
     difficulty: '正常',
@@ -467,7 +467,7 @@ export const cardDetails = {
   58: {
     identity: '非凡百货金卡会员',
     scope: '陕西-西安',
-    benefits: '购物四折',
+    benefits: '购物折扣',
     expiry: '长期',
     difficulty: '正常',
     difficultyLevel: 'mid'
@@ -499,7 +499,7 @@ export const cardDetails = {
   62: {
     identity: '鞍钢钢铁集团职工',
     scope: '辽宁-鞍山',
-    benefits: '余额：240\n享受温泉/洗浴/泳池/客房/餐饮服务',
+    benefits: '余额：240元\n享受温泉/洗浴/泳池/客房/餐饮服务',
     expiry: '2026.12.31',
     difficulty: '正常',
     difficultyLevel: 'mid'
@@ -514,8 +514,8 @@ export const cardDetails = {
   },
   64: {
     identity: '香港博物馆会员',
-    scope: '香港',
-    benefits: '参观香港17间博物馆/美术馆',
+    scope: '中国香港',
+    benefits: '参观香港多间博物馆/美术馆',
     expiry: '2027.6.21',
     difficulty: '正常',
     difficultyLevel: 'mid'
@@ -547,7 +547,7 @@ export const cardDetails = {
   68: {
     identity: '上海交大闵行校区\n三餐理发店会员',
     scope: '上海',
-    benefits: '余额：75.4\n消费八五折',
+    benefits: '余额：75.4元\n消费8.5折',
     expiry: '长期',
     difficulty: '正常',
     difficultyLevel: 'mid'
@@ -569,7 +569,7 @@ export const cardDetails = {
     difficultyLevel: 'mid'
   },
   71: {
-    identity: '乌兹别克斯坦的\n老年人及残障人士',
+    identity: '乌兹别克斯坦老年人\n及残障人士',
     scope: '乌兹别克斯坦',
     benefits: '6折优惠乘坐公共交通工具',
     expiry: '?',
@@ -578,7 +578,7 @@ export const cardDetails = {
   },
   72: {
     identity: '中石化会员',
-    scope: '全国',
+    scope: '全国通用',
     benefits: '余额：333元\n中石化加油&便利店消费',
     expiry: '长期',
     difficulty: '正常',
@@ -618,7 +618,7 @@ export const cardDetails = {
   },
   77: {
     identity: '吉林省图书馆读者',
-    scope: '吉林',
+    scope: '吉林-长春',
     benefits: '借阅图书与期刊45天',
     expiry: '长期',
     difficulty: '正常',
@@ -633,9 +633,9 @@ export const cardDetails = {
     difficultyLevel: 'mid'
   },
   79: {
-    identity: '中国空间技术研究院\n工作人员',
+    identity: '空间技术研究院\n工作人员',
     scope: '北京',
-    benefits: '余额：？\n在中国空间技术研究院（航天城院区）吃饭',
+    benefits: '余额：？\n在空间技术研究院（航天城院区）吃饭',
     expiry: '长期',
     difficulty: '正常',
     difficultyLevel: 'mid'
@@ -674,7 +674,7 @@ export const cardDetails = {
   },
   84: {
     identity: '？玩家',
-    scope: '澳门',
+    scope: '中国澳门',
     benefits: '？',
     expiry: '长期',
     difficulty: '困难',
@@ -690,7 +690,7 @@ export const cardDetails = {
   },
   86: {
     identity: '？玩家',
-    scope: '澳门',
+    scope: '中国澳门',
     benefits: '？',
     expiry: '长期',
     difficulty: '困难',
@@ -698,7 +698,7 @@ export const cardDetails = {
   },
   87: {
     identity: '？玩家',
-    scope: '澳门',
+    scope: '中国澳门',
     benefits: '？',
     expiry: '长期',
     difficulty: '困难',
@@ -706,7 +706,7 @@ export const cardDetails = {
   },
   88: {
     identity: '？玩家',
-    scope: '澳门',
+    scope: '中国澳门',
     benefits: '？',
     expiry: '长期',
     difficulty: '困难',
