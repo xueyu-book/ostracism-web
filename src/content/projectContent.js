@@ -1,6 +1,6 @@
 export const projectHero = {
   titleEn: 'MANIFESTO',
-  titleCn: '俱乐部主张'
+  titleCn: '俱楽部主张'
 }
 
 export const projectParagraphs = [

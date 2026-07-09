@@ -273,17 +273,17 @@ function withNavSvg(svg) {
 
 const navItems = [
   { id: 'card', label: '卡片展示', svg: withNavSvg(iconCard), top: 65, left: 220, width: 46, height: 64 },
-  { id: 'rule', label: '规则问题', svg: withNavSvg(iconRule), top: 65, left: 312, width: 28, height: 64 },
+  { id: 'rule', label: '规则&问题', svg: withNavSvg(iconRule), top: 65, left: 312, width: 28, height: 64 },
   {
     id: 'project',
-    label: '项目立意',
+    label: '俱楽部主张',
     svg: withNavSvg(iconProject),
     top: 63,
     left: 382,
     width: 58,
     height: 68
   },
-  { id: 'menu', label: '驱逐名单', svg: withNavSvg(iconMenu), top: 65, left: 462, width: 68, height: 64 },
+  { id: 'menu', label: '放逐名单', svg: withNavSvg(iconMenu), top: 65, left: 462, width: 68, height: 64 },
   {
     id: 'provision',
     label: '服务条款',
@@ -416,6 +416,8 @@ function onViewportChange() {
   updateMobileLandscapeTip()
 }
 
+const DROP_ZONE_TOLERANCE = 10
+
 const isDragging = ref(false)
 const totemRef = ref(null)
 const ghostRef = ref(null)
@@ -484,13 +486,14 @@ function triggerHide() {
 function isInDropZone(dragEl, zoneEl) {
   const dragRect = dragEl.getBoundingClientRect()
   const zoneRect = zoneEl.getBoundingClientRect()
-  const tolerance = 4
+  const centerX = dragRect.left + dragRect.width / 2
+  const centerY = dragRect.top + dragRect.height / 2
 
   return (
-    dragRect.left >= zoneRect.left - tolerance &&
-    dragRect.top >= zoneRect.top - tolerance &&
-    dragRect.right <= zoneRect.right + tolerance &&
-    dragRect.bottom <= zoneRect.bottom + tolerance
+    centerX >= zoneRect.left - DROP_ZONE_TOLERANCE &&
+    centerX <= zoneRect.right + DROP_ZONE_TOLERANCE &&
+    centerY >= zoneRect.top - DROP_ZONE_TOLERANCE &&
+    centerY <= zoneRect.bottom + DROP_ZONE_TOLERANCE
   )
 }
 
@@ -1059,8 +1062,8 @@ $nav-reveal-duration: 0.75s;
 
 .intro-view__mobile-tip-panel {
   display: block;
-  width: 88vw;
-  max-width: 88vw;
+  width: calc(88vw * 2 / 3);
+  max-width: calc(88vw * 2 / 3);
   padding: 0;
   border: none;
   background: none;

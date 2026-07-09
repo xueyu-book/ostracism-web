@@ -41,9 +41,9 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   5: {
-    identity: '持卡乘客',
-    scope: '安徽-合肥',
-    benefits: '线下充值八折&乘坐公共交通工具',
+    identity: '屈臣氏VIP',
+    scope: '中国内地',
+    benefits: '积分抵现&生日礼遇&会员专享价&会员专属活动，免费门店服务&优先购买权',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -73,18 +73,18 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   9: {
-    identity: '应城市楚珍园年卡会员',
-    scope: '湖北-孝感应城',
-    benefits: '带四位亲友不限次数入园畅玩',
-    expiry: '2026.12.31',
+    identity: '好利来',
+    scope: '全国通用',
+    benefits: '余额：100',
+    expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
   },
   10: {
-    identity: '寿星',
-    scope: '内蒙古-赤峰',
-    benefits: '福兴东方精品酒店生日场地布置&多种免费礼遇',
-    expiry: '2026.12.31',
+    identity: '极速车神',
+    scope: '全球通用',
+    benefits: '游玩极速赛车系列街机',
+    expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
   },
@@ -98,17 +98,17 @@ export const cardDetails = {
   },
   12: {
     identity: '持卡乘客',
-    scope: '上海',
-    benefits: '乘坐公共交通工具',
+    scope: '塞舌尔-马埃岛&普拉兰岛',
+    benefits: '余额：150卢比\n单次乘车优惠价为10卢比&多人可刷',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
   },
   13: {
-    identity: '丑小鸭沙龙护肤养身SPA会员',
-    scope: '浙江-衢州江山',
-    benefits: '在天余小区分店免费剪发三次',
-    expiry: '2027.1.1',
+    identity: '俄罗斯大树餐厅会员',
+    scope: '俄罗斯多个城市',
+    benefits: '菜品优惠',
+    expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
   },
@@ -121,9 +121,9 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   15: {
-    identity: '碧津公园游乐玩家',
-    scope: '重庆',
-    benefits: '余额：95-105',
+    identity: '堂会VIP',
+    scope: '广东-广州&佛山&英德',
+    benefits: 'K歌、自助餐及房费优惠',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -169,10 +169,10 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   21: {
-    identity: '极速车神',
-    scope: '全球通用',
-    benefits: '游玩极速赛车系列街机',
-    expiry: '长期',
+    identity: '寿星',
+    scope: '内蒙古-赤峰',
+    benefits: '福兴东方精品酒店生日场地布置&多种免费礼遇',
+    expiry: '2026.12.31',
     difficulty: '简易',
     difficultyLevel: 'low'
   },
@@ -193,10 +193,10 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   24: {
-    identity: '俄罗斯大树餐厅会员',
-    scope: '俄罗斯多个城市',
-    benefits: '菜品优惠',
-    expiry: '长期',
+    identity: '丑小鸭沙龙护肤养身\nSPA会员',
+    scope: '浙江-衢州江山',
+    benefits: '在天余小区分店免费剪发三次',
+    expiry: '2027.1.1',
     difficulty: '简易',
     difficultyLevel: 'low'
   },
@@ -217,17 +217,17 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   27: {
-    identity: '太阳岛度假酒店娱乐会员',
+    identity: '太阳岛度假酒店\n娱乐会员',
     scope: '上海',
     benefits: '余额：200\n娱乐项目消费',
-    expiry: '2043年',
+    expiry: '2043',
     difficulty: '简易',
     difficultyLevel: 'low'
   },
   28: {
     identity: '持卡乘客',
-    scope: '塞舌尔-马埃岛&普拉兰岛',
-    benefits: '余额：150卢比\n单次乘车优惠价为10卢比&多人可刷',
+    scope: '上海',
+    benefits: '乘坐公共交通工具',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -265,9 +265,9 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   33: {
-    identity: '堂会VIP',
-    scope: '广东-广州&佛山&英德',
-    benefits: 'K歌、自助餐及房费优惠',
+    identity: '碧津公园游乐玩家',
+    scope: '重庆',
+    benefits: '余额：95-105',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -361,9 +361,9 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   45: {
-    identity: '屈臣氏VIP',
-    scope: '中国内地',
-    benefits: '积分抵现&生日礼遇&会员专享价&会员专属活动，免费门店服务&优先购买权',
+    identity: '持卡乘客',
+    scope: '安徽-合肥',
+    benefits: '线下充值八折&乘坐公共交通工具',
     expiry: '长期',
     difficulty: '简易',
     difficultyLevel: 'low'
@@ -385,10 +385,10 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   48: {
-    identity: '好利来',
-    scope: '全国通用',
-    benefits: '余额：100',
-    expiry: '长期',
+    identity: '应城市楚珍园年卡会员',
+    scope: '湖北-孝感应城',
+    benefits: '带四位亲友不限次数入园畅玩',
+    expiry: '2026.12.31',
     difficulty: '简易',
     difficultyLevel: 'low'
   },
@@ -449,7 +449,7 @@ export const cardDetails = {
     difficultyLevel: 'mid'
   },
   56: {
-    identity: '中国农业科学院哈尔滨兽医研究所工作人员',
+    identity: '中国农业科学院哈尔滨\n兽医研究所工作人员',
     scope: '哈尔滨',
     benefits: '余额：？\n在研究所打水',
     expiry: '长期',
@@ -460,7 +460,7 @@ export const cardDetails = {
     identity: '儿童',
     scope: '中国大陆&港澳',
     benefits: '余额：9.4港币\n优惠乘坐公共交通工具&更多城市消费',
-    expiry: '2033年7月',
+    expiry: '2033.7',
     difficulty: '正常',
     difficultyLevel: 'mid'
   },
@@ -508,7 +508,7 @@ export const cardDetails = {
     identity: '维多利亚州儿童',
     scope: '澳大利亚-维多利亚州',
     benefits: '余额：5.15澳元\n持卡儿童免费乘坐维多利亚州公共交通',
-    expiry: '2027年2月',
+    expiry: '2027.2',
     difficulty: '正常',
     difficultyLevel: 'mid'
   },
@@ -529,7 +529,7 @@ export const cardDetails = {
     difficultyLevel: 'mid'
   },
   66: {
-    identity: '米兰及伦巴第大区博物馆女性会员',
+    identity: '米兰及伦巴第大区博物馆\n女性会员',
     scope: '意大利-米兰&周边地区',
     benefits: '免费参观米兰大多数博物馆景点&免费使用公厕',
     expiry: '2026.8.24',
@@ -540,12 +540,12 @@ export const cardDetails = {
     identity: 'Adairs Linen Lovers',
     scope: '澳大利亚',
     benefits: '享退换期延长&购物积分&折扣礼遇',
-    expiry: '2028年4月',
+    expiry: '2028.4',
     difficulty: '正常',
     difficultyLevel: 'mid'
   },
   68: {
-    identity: '上海交大闵行校区三餐理发店会员',
+    identity: '上海交大闵行校区\n三餐理发店会员',
     scope: '上海',
     benefits: '余额：75.4\n消费八五折',
     expiry: '长期',
@@ -556,7 +556,7 @@ export const cardDetails = {
     identity: '美国非居民',
     scope: '美国',
     benefits: '免11项热门公园附加费',
-    expiry: '2027年2月',
+    expiry: '2027.2',
     difficulty: '正常',
     difficultyLevel: 'mid'
   },
@@ -569,7 +569,7 @@ export const cardDetails = {
     difficultyLevel: 'mid'
   },
   71: {
-    identity: '乌兹别克斯坦的老年人及残障人士',
+    identity: '乌兹别克斯坦的\n老年人及残障人士',
     scope: '乌兹别克斯坦',
     benefits: '6折优惠乘坐公共交通工具',
     expiry: '?',
@@ -633,7 +633,7 @@ export const cardDetails = {
     difficultyLevel: 'mid'
   },
   79: {
-    identity: '中国空间技术研究院工作人员',
+    identity: '中国空间技术研究院\n工作人员',
     scope: '北京',
     benefits: '余额：？\n在中国空间技术研究院（航天城院区）吃饭',
     expiry: '长期',
@@ -652,7 +652,7 @@ export const cardDetails = {
     identity: '国际青年旅舍会员',
     scope: '全球通用',
     benefits: '青年旅舍住宿优惠&旅行折扣',
-    expiry: '2027年6月',
+    expiry: '2027.6',
     difficulty: '困难',
     difficultyLevel: 'high'
   },
@@ -660,7 +660,7 @@ export const cardDetails = {
     identity: '国际青年',
     scope: '全球通用',
     benefits: '全球商店享受折扣优惠',
-    expiry: '2027年6月',
+    expiry: '2027.6',
     difficulty: '困难',
     difficultyLevel: 'high'
   },
@@ -668,7 +668,7 @@ export const cardDetails = {
     identity: '国际教师',
     scope: '全球通用',
     benefits: '全球商店享受折扣优惠',
-    expiry: '2027年6月',
+    expiry: '2027.6',
     difficulty: '困难',
     difficultyLevel: 'high'
   },
@@ -716,7 +716,7 @@ export const cardDetails = {
     identity: '？会员',
     scope: '全球通用',
     benefits: '？',
-    expiry: '2026年9月',
+    expiry: '2026.9',
     difficulty: '困难',
     difficultyLevel: 'high'
   },
@@ -724,7 +724,7 @@ export const cardDetails = {
     identity: '？电子公民',
     scope: '全球通用',
     benefits: '？',
-    expiry: '2027年7月',
+    expiry: '2027.7',
     difficulty: '困难',
     difficultyLevel: 'high'
   },

@@ -28,7 +28,10 @@
         />
       </div>
       <template v-if="selectedCard && cardDetail">
-        <div class="card-module__detail-panel">
+        <div
+          class="card-module__detail-panel"
+          :style="cardDetailPanelStyle"
+        >
           <div class="card-module__identity">{{ cardDetail.identity }}</div>
           <div class="card-module__expiry">{{ cardDetail.expiry }}</div>
           <div class="card-module__scope">{{ cardDetail.scope }}</div>
@@ -48,9 +51,9 @@
 <script setup>
 import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { getCardDetail } from '@/content/cardDetailContent'
-import heroLow from '@/assets/images/card_detail/hero_low.svg'
-import heroMid from '@/assets/images/card_detail/hero_mid.svg'
-import heroHigh from '@/assets/images/card_detail/hero_high.svg'
+import cardBg1to50 from '@/assets/images/card_detail/card_bg__1-50.svg'
+import cardBg51to80 from '@/assets/images/card_detail/card_bg__51-80.svg'
+import cardBg81to90 from '@/assets/images/card_detail/card_bg__81-90.svg'
 
 const props = defineProps({
   contentVisible: {
@@ -60,12 +63,6 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['scroll-sync'])
-
-const heroMap = {
-  low: heroLow,
-  mid: heroMid,
-  high: heroHigh
-}
 
 function loadCards() {
   const thumbEntries = Object.entries(
@@ -91,10 +88,15 @@ const cardDetail = computed(() =>
   selectedCard.value ? getCardDetail(selectedCard.value.id) : null
 )
 
-const heroSrc = computed(() => {
-  const level = cardDetail.value?.difficultyLevel ?? 'mid'
-  return heroMap[level] ?? heroMid
-})
+function getCardDetailBg(cardId) {
+  if (cardId <= 50) return cardBg1to50
+  if (cardId <= 80) return cardBg51to80
+  return cardBg81to90
+}
+
+const cardDetailPanelStyle = computed(() => ({
+  backgroundImage: `url('${getCardDetailBg(selectedCard.value?.id ?? 1)}')`
+}))
 
 let scrollTarget = null
 
@@ -191,7 +193,7 @@ $card-detail-h: 464px;
 $card-detail-offset-x: ($card-module-w - $card-detail-w) * 0.5;
 $card-detail-edge: 40px;
 $card-detail-back-gap: 40px;
-$card-detail-back-w: 110px;
+$card-detail-back-w: 124px;
 $card-detail-back-h: 44px;
 $card-detail-img-w: 438px;
 $card-detail-img-h: 288px;
@@ -273,7 +275,9 @@ $detail-gray: #959595;
     position: relative;
     width: $card-detail-w;
     height: $card-detail-h;
-    background: url('@/assets/images/card_detail/card_bg.svg') no-repeat center / 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
     box-sizing: border-box;
     overflow: hidden;
   }
@@ -284,6 +288,7 @@ $detail-gray: #959595;
     bottom: 0;
     width: $card-detail-img-w;
     object-fit: cover;
+    border-radius: 8px;
     user-select: none;
     pointer-events: none;
   }
@@ -300,6 +305,7 @@ $detail-gray: #959595;
     font-weight: 400;
     line-height: 1.45;
     color: $detail-gray;
+    white-space: pre-line;
   }
 
   &__identity {
@@ -332,7 +338,6 @@ $detail-gray: #959595;
     align-self: flex-start;
     margin-left: $card-detail-offset-x;
     width: $card-detail-back-w;
-    height: $card-detail-back-h;
     padding: 0;
     border: none;
     background: none;
@@ -342,7 +347,6 @@ $detail-gray: #959595;
   &__back-icon {
     display: block;
     width: 100%;
-    height: 100%;
     object-fit: contain;
     user-select: none;
     pointer-events: none;

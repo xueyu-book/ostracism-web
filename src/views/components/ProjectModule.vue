@@ -58,14 +58,20 @@
         </header>
 
         <div class="project-module__body">
-          <p
-            v-for="(paragraph, index) in projectParagraphs"
-            :key="`project-paragraph-${index}`"
-            class="project-module__paragraph"
-            :class="{ 'project-module__paragraph--lead': index === 0 }"
+          <div
+            v-for="(group, groupIndex) in projectParagraphGroups"
+            :key="`project-group-${groupIndex}`"
+            class="project-module__paragraph-group"
           >
-            {{ paragraph }}
-          </p>
+            <p
+              v-for="(paragraph, index) in group"
+              :key="`project-paragraph-${groupIndex}-${index}`"
+              class="project-module__paragraph"
+              :class="{ 'project-module__paragraph--lead': groupIndex === 0 && index === 0 }"
+            >
+              {{ paragraph }}
+            </p>
+          </div>
         </div>
 
         <footer class="project-module__closing">
@@ -101,6 +107,16 @@
 
 <script setup>
 import { projectHero, projectParagraphs, projectClosing } from '@/content/projectContent'
+
+function chunkBySize(items, size) {
+  const groups = []
+  for (let i = 0; i < items.length; i += size) {
+    groups.push(items.slice(i, i + size))
+  }
+  return groups
+}
+
+const projectParagraphGroups = chunkBySize(projectParagraphs, 3)
 </script>
 
 <style lang="scss" scoped>
@@ -122,7 +138,8 @@ $project-deco-edge-offset: -5px;
 $project-footer-title-h: 96px;
 $project-footer-title-bottom: 30px;
 $project-body-footer-gap: 260px;
-$project-paragraph-gap: 25px;
+$project-paragraph-gap: 6px;
+$project-paragraph-group-gap: 48px;
 $greek-blue: #0655bc;
 $text-color: #959595;
 
@@ -313,6 +330,13 @@ $text-color: #959595;
   &__body {
     max-width: 1180px;
     margin: 0 auto;
+    text-align: center;
+  }
+
+  &__paragraph-group {
+    & + & {
+      margin-top: $project-paragraph-group-gap;
+    }
   }
 
   &__paragraph {
@@ -320,10 +344,9 @@ $text-color: #959595;
     font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
     font-size: 18px;
     font-weight: 400;
-    line-height: 1.45;
+    line-height: 1.25;
     color: $text-color;
-    text-align: left;
-    text-indent: 2em;
+    text-align: center;
 
     &--lead {
       font-family: 'Mengyuan Heiti W14', 'Mengyuan Heiti', sans-serif;
@@ -337,24 +360,27 @@ $text-color: #959595;
   &__closing {
     max-width: 1180px;
     margin: 28px auto 0;
+    text-align: center;
   }
 
   &__quote {
-    margin: 20px 0 0;
+    margin: 12px 0 0;
     font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
     font-size: 18px;
     font-weight: 400;
-    line-height: 1.45;
+    line-height: 1.25;
     color: $text-color;
+    text-align: center;
   }
 
   &__tagline {
-    margin: 20px 0 0;
+    margin: 12px 0 0;
     font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
     font-size: 18px;
     font-weight: 400;
-    line-height: 1.45;
+    line-height: 1.25;
     color: $text-color;
+    text-align: center;
   }
 
   &__footer-title {
