@@ -72,12 +72,6 @@
               {{ paragraph }}
             </p>
           </div>
-
-          <div class="project-module__paragraph-group project-module__paragraph-group--closing">
-            <p class="project-module__paragraph">{{ projectClosing.intro }}</p>
-            <p class="project-module__quote">{{ projectClosing.quote }}</p>
-            <p class="project-module__tagline">{{ projectClosing.tagline }}</p>
-          </div>
         </div>
       </div>
 
@@ -106,7 +100,7 @@
 </template>
 
 <script setup>
-import { projectHero, projectParagraphGroups, projectClosing } from '@/content/projectContent'
+import { projectHero, projectParagraphGroups } from '@/content/projectContent'
 </script>
 
 <style lang="scss" scoped>
@@ -327,13 +321,6 @@ $text-color: #959595;
     & + & {
       margin-top: $project-paragraph-group-gap;
     }
-
-    &--closing {
-      .project-module__quote,
-      .project-module__tagline {
-        margin: $project-paragraph-gap 0 0;
-      }
-    }
   }
 
   &__paragraph {
@@ -352,26 +339,6 @@ $text-color: #959595;
     & + & {
       margin-top: $project-paragraph-gap;
     }
-  }
-
-  &__quote {
-    margin: 0;
-    font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.25;
-    color: $text-color;
-    text-align: center;
-  }
-
-  &__tagline {
-    margin: 0;
-    font-family: 'Mengyuan Heiti W6', 'Mengyuan Heiti', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.25;
-    color: $text-color;
-    text-align: center;
   }
 
   &__footer-title {
