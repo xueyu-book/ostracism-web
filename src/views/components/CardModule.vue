@@ -7,6 +7,8 @@
           :key="card.id"
           type="button"
           class="card-module__item"
+          :class="{ 'card-module__item--revealed': cardsRevealed }"
+          :style="getCardItemStyle(index)"
           :data-card-id="card.id"
           :data-card-index="index"
           @click="selectCard(card)"
@@ -49,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { ref, computed, watch, onBeforeUnmount, nextTick } from 'vue'
 import { getCardDetail } from '@/content/cardDetailContent'
 import cardBg1to50 from '@/assets/images/card_detail/card_bg__1-50.svg'
 import cardBg51to80 from '@/assets/images/card_detail/card_bg__51-80.svg'
@@ -63,6 +65,19 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['scroll-sync'])
+
+const CARD_REVEAL_STAGGER_ROW_MS = 55
+const CARD_REVEAL_STAGGER_COL_MS = 30
+const CARD_GRID_COLUMNS = 5
+
+function getCardItemStyle(index) {
+  const row = Math.floor(index / CARD_GRID_COLUMNS)
+  const col = index % CARD_GRID_COLUMNS
+
+  return {
+    '--card-reveal-delay': `${row * CARD_REVEAL_STAGGER_ROW_MS + col * CARD_REVEAL_STAGGER_COL_MS}ms`
+  }
+}
 
 function loadCards() {
   const thumbEntries = Object.entries(
@@ -83,6 +98,7 @@ function loadCards() {
 const cards = loadCards()
 const selectedCard = ref(null)
 const gridWrapRef = ref(null)
+const cardsRevealed = ref(false)
 
 const cardDetail = computed(() =>
   selectedCard.value ? getCardDetail(selectedCard.value.id) : null
@@ -99,6 +115,29 @@ const cardDetailPanelStyle = computed(() => ({
 }))
 
 let scrollTarget = null
+let revealFrame = null
+
+function resetCardsReveal() {
+  cardsRevealed.value = false
+
+  if (revealFrame) {
+    cancelAnimationFrame(revealFrame)
+    revealFrame = null
+  }
+}
+
+function triggerCardsReveal() {
+  resetCardsReveal()
+
+  nextTick(() => {
+    revealFrame = requestAnimationFrame(() => {
+      revealFrame = requestAnimationFrame(() => {
+        cardsRevealed.value = true
+        revealFrame = null
+      })
+    })
+  })
+}
 
 function emitScrollSync() {
   const root = gridWrapRef.value
@@ -137,6 +176,8 @@ function setupGridScroll() {
 }
 
 function setupListView() {
+  triggerCardsReveal()
+
   nextTick(() => {
     requestAnimationFrame(() => {
       setupGridScroll()
@@ -163,18 +204,15 @@ watch(
       setupListView()
     } else if (!visible) {
       teardownGridScroll()
+      resetCardsReveal()
     }
-  }
+  },
+  { immediate: true }
 )
-
-onMounted(() => {
-  if (props.contentVisible && !selectedCard.value) {
-    setupListView()
-  }
-})
 
 onBeforeUnmount(() => {
   teardownGridScroll()
+  resetCardsReveal()
 })
 </script>
 
@@ -208,6 +246,7 @@ $card-detail-difficulty-top: 218px;
 $card-detail-benefits-left: 148px;
 $card-detail-benefits-top: 382px;
 $card-detail-benefits-w: 580px;
+$card-reveal-duration: 0.75s;
 $greek-blue: #0655bc;
 $detail-gray: #959595;
 
@@ -249,6 +288,17 @@ $detail-gray: #959595;
     cursor: pointer;
     overflow: hidden;
     flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-14px) scale(0.92);
+    transition:
+      opacity $card-reveal-duration ease-out,
+      transform $card-reveal-duration cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--card-reveal-delay, 0ms), var(--card-reveal-delay, 0ms);
+
+    &--revealed {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
   }
 
   &__thumb {
