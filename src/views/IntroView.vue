@@ -246,6 +246,7 @@ import iconRule from '@/assets/images/nav_icon/2_rule.svg?raw'
 import iconProject from '@/assets/images/nav_icon/3_project.svg?raw'
 import iconMenu from '@/assets/images/nav_icon/4_menu.svg?raw'
 import iconProvision from '@/assets/images/nav_icon/5_provision.svg?raw'
+import termsPdf from '@/assets/TOHC-terms.pdf'
 import cardPillarLeft from '@/assets/images/nav_pillar/card/left.svg'
 import cardPillarRight from '@/assets/images/nav_pillar/card/right.svg'
 import rulePillarLeft from '@/assets/images/nav_pillar/rule/left.svg'
@@ -293,7 +294,7 @@ const navItems = [
     left: 552,
     width: 54,
     height: 66,
-    externalUrl: 'https://ketchupormakeup.com/terms-and-conditions.pdf'
+    externalUrl: termsPdf
   }
 ]
 

@@ -553,18 +553,18 @@ export const cardDetails = {
     difficultyLevel: 'mid'
   },
   69: {
-    identity: '美国非居民',
-    scope: '美国',
-    benefits: '免11项热门公园附加费',
-    expiry: '2027.2',
-    difficulty: '正常',
-    difficultyLevel: 'mid'
-  },
-  70: {
     identity: '乌兹别克斯坦大学生',
     scope: '乌兹别克斯坦',
     benefits: '5折优惠乘坐公共交通工具',
     expiry: '?',
+    difficulty: '正常',
+    difficultyLevel: 'mid'
+  },
+  70: {
+    identity: '美国非居民',
+    scope: '美国',
+    benefits: '免11项热门公园附加费',
+    expiry: '2027.2',
     difficulty: '正常',
     difficultyLevel: 'mid'
   },
