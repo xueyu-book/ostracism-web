@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="" />
+    <list default="true" id="cd13bc16-82c5-4254-b3c0-71e28230903d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_25.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/card/card_80.jpg" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +28,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/yugeng/Documents/zuanqian-project/aisen/ostracism-web",
+    "last_opened_file_path": "/Users/yugeng/Documents/zuanqian-project/aisen/ostracism项目/ostracism-web",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -52,6 +55,7 @@
       <updated>1782437730268</updated>
       <workItem from="1782437731367" duration="9249000" />
       <workItem from="1782786413490" duration="20202000" />
+      <workItem from="1785147254428" duration="1563000" />
     </task>
     <servers />
   </component>

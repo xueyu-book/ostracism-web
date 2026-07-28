@@ -201,12 +201,12 @@ export const cardDetails = {
     difficultyLevel: 'low'
   },
   25: {
-    identity: '持卡乘客',
-    scope: '西班牙-马德里',
-    benefits: '乘坐公共交通工具',
+    identity: '小食肆辣椒炒肉内部人员',
+    scope: '河南-洛阳',
+    benefits: '8.5折用餐优惠',
     expiry: '长期',
-    difficulty: '简易',
-    difficultyLevel: 'low'
+    difficulty: '正常',
+    difficultyLevel: 'mid'
   },
   26: {
     identity: '持卡乘客',
@@ -641,12 +641,12 @@ export const cardDetails = {
     difficultyLevel: 'mid'
   },
   80: {
-    identity: '小食肆辣椒炒肉内部人员',
-    scope: '河南-洛阳',
-    benefits: '8.5折用餐优惠',
+    identity: '望京西园三区业主',
+    scope: '北京',
+    benefits: '出入望京西园',
     expiry: '长期',
-    difficulty: '正常',
-    difficultyLevel: 'mid'
+    difficulty: '简易',
+    difficultyLevel: 'low'
   },
   81: {
     identity: '国际青年旅舍会员',
