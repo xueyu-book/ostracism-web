@@ -139,8 +139,10 @@ $slide-distance: 56px;
   position: fixed;
   inset: 0;
   z-index: 10001;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   background: #7b00ff;
   overflow: hidden;
 
@@ -210,7 +212,9 @@ $slide-distance: 56px;
 
   .icon-footer {
     position: absolute;
-    bottom: 100px;
+    /* 避开 iOS 底部 Home Indicator / 刘海安全区 */
+    bottom: calc(100px + constant(safe-area-inset-bottom));
+    bottom: calc(100px + env(safe-area-inset-bottom, 0px));
     left: 0;
     right: 0;
     margin: 0 auto;
