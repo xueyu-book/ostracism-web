@@ -3,6 +3,7 @@
     <div
       v-if="visible"
       class="splash-screen"
+      :class="{ 'splash-screen--mobile': isMobile }"
       role="dialog"
       aria-modal="true"
       aria-label="开屏"
@@ -56,7 +57,13 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const DURATION_MS = 2000
 
+function isMobileDevice() {
+  const ua = navigator.userAgent || navigator.vendor || ''
+  return /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua)
+}
+
 const visible = ref(true)
+const isMobile = ref(isMobileDevice())
 let closeTimer = null
 
 onMounted(() => {
@@ -216,10 +223,10 @@ $slide-distance: 56px;
     margin: 0 auto;
     width: 152px;
     animation: splash-fade-in 0.7s $stage-ease $stage-5-delay both;
+  }
 
-    @media (max-width: 768px) {
-      bottom: 300px;
-    }
+  &--mobile .icon-footer {
+    bottom: 200px;
   }
 }
 </style>
