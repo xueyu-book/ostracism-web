@@ -1116,7 +1116,10 @@ $totem-snap-duration: 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6vw;
+  padding: max(6vw, env(safe-area-inset-top, 0px))
+    max(6vw, env(safe-area-inset-right, 0px))
+    max(6vw, env(safe-area-inset-bottom, 0px))
+    max(6vw, env(safe-area-inset-left, 0px));
   background: rgba(0, 0, 0, 0.55);
 }
 

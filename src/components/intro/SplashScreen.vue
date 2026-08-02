@@ -55,13 +55,34 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const DURATION_MS = 2000
+const SPLASH_THEME = '#7b00ff'
+const PAGE_THEME = '#efedea'
 
 const visible = ref(true)
 let closeTimer = null
 
+function setThemeColor(color) {
+  let meta = document.querySelector('meta[name="theme-color"]')
+  if (!meta) {
+    meta = document.createElement('meta')
+    meta.setAttribute('name', 'theme-color')
+    document.head.appendChild(meta)
+  }
+  meta.setAttribute('content', color)
+}
+
+function closeSplash() {
+  visible.value = false
+  // 恢复页面底色，避免 iOS Safari 状态栏/底栏残留开屏紫色
+  setThemeColor(PAGE_THEME)
+  document.documentElement.style.backgroundColor = PAGE_THEME
+  document.body.style.backgroundColor = PAGE_THEME
+}
+
 onMounted(() => {
+  setThemeColor(SPLASH_THEME)
   closeTimer = window.setTimeout(() => {
-    visible.value = false
+    closeSplash()
     closeTimer = null
   }, DURATION_MS)
 })
@@ -70,6 +91,7 @@ onBeforeUnmount(() => {
   if (closeTimer !== null) {
     window.clearTimeout(closeTimer)
   }
+  setThemeColor(PAGE_THEME)
 })
 </script>
 
