@@ -124,7 +124,7 @@ onBeforeUnmount(() => {
 
   .icon-footer {
     position: absolute;
-    top: 1014zpx;
+    top: 1014px;
     left: 887px;
     width: 152px;
   }
