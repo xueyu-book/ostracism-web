@@ -8,39 +8,45 @@
       aria-label="开屏"
     >
       <img
-          class="icon-deco-1"
-          src="@/assets/images/gif/1.svg"
-          alt=""
+        class="icon-deco-1"
+        src="@/assets/images/gif/1.svg"
+        alt=""
       />
       <img
-          class="icon-deco-2"
-          src="@/assets/images/gif/2.svg"
-          alt=""
+        class="icon-deco-2"
+        src="@/assets/images/gif/2.svg"
+        alt=""
       />
       <img
-          class="icon-deco-3"
-          src="@/assets/images/gif/3.svg"
-          alt=""
-      />
-
-      <img
-          class="icon-deco-4"
-          src="@/assets/images/gif/3.svg"
-          alt=""
+        class="icon-deco-3"
+        src="@/assets/images/gif/3.svg"
+        alt=""
       />
       <img
-          class="icon-deco-5"
-          src="@/assets/images/gif/2.svg"
-          alt=""
+        class="icon-deco-4"
+        src="@/assets/images/gif/3.svg"
+        alt=""
       />
       <img
-          class="icon-deco-6"
-          src="@/assets/images/gif/1.svg"
-          alt=""
+        class="icon-deco-5"
+        src="@/assets/images/gif/2.svg"
+        alt=""
       />
-
-      <img src="@/assets/images/gif/4.svg" alt="" class="icon-logo">
-      <img src="@/assets/images/gif/5.svg" alt="" class="icon-footer">
+      <img
+        class="icon-deco-6"
+        src="@/assets/images/gif/1.svg"
+        alt=""
+      />
+      <img
+        src="@/assets/images/gif/4.svg"
+        alt=""
+        class="icon-logo"
+      />
+      <img
+        src="@/assets/images/gif/5.svg"
+        alt=""
+        class="icon-footer"
+      />
     </div>
   </Teleport>
 </template>
@@ -48,7 +54,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-const DURATION_MS = 300000
+const DURATION_MS = 2000
 
 const visible = ref(true)
 let closeTimer = null
@@ -68,6 +74,67 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" scoped>
+// 单段偏长 + 短间隔叠化，避免上一阶段停稳后再切下一阶段
+$stage-duration: 1s;
+$stage-ease: cubic-bezier(0.33, 0, 0.2, 1);
+$stage-1-delay: 0s;
+$stage-2-delay: 0.18s;
+$stage-3-delay: 0.36s;
+$stage-4-delay: 0.58s;
+$stage-5-delay: 0.78s;
+$slide-distance: 56px;
+
+@keyframes splash-in-from-left {
+  0% {
+    opacity: 0;
+    transform: translate3d(-#{$slide-distance}, 0, 0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes splash-in-from-right {
+  0% {
+    opacity: 0;
+    transform: translate3d(#{$slide-distance}, 0, 0) scaleX(-1);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scaleX(-1);
+  }
+}
+
+@keyframes splash-fade-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes splash-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .splash-screen {
   position: fixed;
   inset: 0;
@@ -75,44 +142,60 @@ onBeforeUnmount(() => {
   width: 100vw;
   height: 100vh;
   background: #7b00ff;
+  overflow: hidden;
+
+  img {
+    opacity: 0;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+  }
+
   .icon-deco-1 {
     position: absolute;
     left: 0;
     top: 20px;
     width: 680px;
+    animation: splash-in-from-left $stage-duration $stage-ease $stage-1-delay both;
   }
+
   .icon-deco-2 {
     position: absolute;
     left: 382px;
     top: 220px;
     width: 410px;
+    animation: splash-in-from-left $stage-duration $stage-ease $stage-2-delay both;
   }
+
   .icon-deco-3 {
     position: absolute;
     left: 646px;
     top: 310px;
     width: 290px;
+    animation: splash-in-from-left $stage-duration $stage-ease $stage-3-delay both;
   }
+
   .icon-deco-4 {
     position: absolute;
     right: 646px;
     top: 310px;
     width: 290px;
-    transform: scaleX(-1);
+    animation: splash-in-from-right $stage-duration $stage-ease $stage-3-delay both;
   }
+
   .icon-deco-5 {
     position: absolute;
     right: 382px;
     top: 220px;
     width: 410px;
-    transform: scaleX(-1);
+    animation: splash-in-from-right $stage-duration $stage-ease $stage-2-delay both;
   }
+
   .icon-deco-6 {
     position: absolute;
     right: 0;
     top: 20px;
     width: 680px;
-    transform: scaleX(-1);
+    animation: splash-in-from-right $stage-duration $stage-ease $stage-1-delay both;
   }
 
   .icon-logo {
@@ -120,6 +203,7 @@ onBeforeUnmount(() => {
     top: 600px;
     left: 878px;
     width: 164px;
+    animation: splash-fade-up 0.9s $stage-ease $stage-4-delay both;
   }
 
   .icon-footer {
@@ -127,6 +211,7 @@ onBeforeUnmount(() => {
     top: 1014px;
     left: 887px;
     width: 152px;
+    animation: splash-fade-in 0.7s $stage-ease $stage-5-delay both;
   }
 }
 </style>
