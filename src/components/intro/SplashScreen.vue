@@ -55,34 +55,13 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const DURATION_MS = 2000
-const SPLASH_THEME = '#7b00ff'
-const PAGE_THEME = '#efedea'
 
 const visible = ref(true)
 let closeTimer = null
 
-function setThemeColor(color) {
-  let meta = document.querySelector('meta[name="theme-color"]')
-  if (!meta) {
-    meta = document.createElement('meta')
-    meta.setAttribute('name', 'theme-color')
-    document.head.appendChild(meta)
-  }
-  meta.setAttribute('content', color)
-}
-
-function closeSplash() {
-  visible.value = false
-  // 恢复页面底色，避免 iOS Safari 状态栏/底栏残留开屏紫色
-  setThemeColor(PAGE_THEME)
-  document.documentElement.style.backgroundColor = PAGE_THEME
-  document.body.style.backgroundColor = PAGE_THEME
-}
-
 onMounted(() => {
-  setThemeColor(SPLASH_THEME)
   closeTimer = window.setTimeout(() => {
-    closeSplash()
+    visible.value = false
     closeTimer = null
   }, DURATION_MS)
 })
@@ -91,7 +70,6 @@ onBeforeUnmount(() => {
   if (closeTimer !== null) {
     window.clearTimeout(closeTimer)
   }
-  setThemeColor(PAGE_THEME)
 })
 </script>
 
@@ -161,10 +139,9 @@ $slide-distance: 56px;
   position: fixed;
   inset: 0;
   z-index: 10001;
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
+  width: 100vw;
+  height: 100vh;
+  background: #7b00ff;
   overflow: hidden;
 
   img {
@@ -233,9 +210,7 @@ $slide-distance: 56px;
 
   .icon-footer {
     position: absolute;
-    /* 避开 iOS 底部 Home Indicator / 刘海安全区 */
-    bottom: calc(100px + constant(safe-area-inset-bottom));
-    bottom: calc(100px + env(safe-area-inset-bottom, 0px));
+    bottom: 100px;
     left: 0;
     right: 0;
     margin: 0 auto;

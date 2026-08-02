@@ -6,17 +6,11 @@
   padding: 0;
 }
 
-html {
-  /* 与页面底色一致，避免 viewport-fit=cover 后安全区透出开屏紫 */
-  background: #efedea;
-}
-
 html,
 body,
 #app {
   min-width: 100%;
   min-height: 100%;
-  min-height: 100dvh;
   overflow: auto;
 }
 
@@ -33,9 +27,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  min-height: 100dvh;
   min-width: 100vw;
-  background: #efedea;
 }
 
 button {
