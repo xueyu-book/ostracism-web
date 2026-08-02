@@ -3,6 +3,8 @@
     class="intro-view"
     :class="{ 'intro-view--project': contentVisible && isProjectModule }"
   >
+    <SplashScreen />
+
     <div
       class="intro-view__bg"
       :class="{ 'intro-view__bg--sliding': wallReady }"
@@ -232,6 +234,7 @@
 
 <script setup>
 import { ref, reactive, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import SplashScreen from '@/components/intro/SplashScreen.vue'
 import letterO from '@/assets/images/home/0_grey.svg'
 import letterS from '@/assets/images/home/1_S.svg'
 import letterT from '@/assets/images/home/2_T.svg'
