@@ -216,6 +216,10 @@ $slide-distance: 56px;
     margin: 0 auto;
     width: 152px;
     animation: splash-fade-in 0.7s $stage-ease $stage-5-delay both;
+
+    @media (max-width: 768px) {
+      bottom: 200px;
+    }
   }
 }
 </style>
