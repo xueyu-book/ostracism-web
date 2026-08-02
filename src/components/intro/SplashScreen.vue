@@ -226,7 +226,7 @@ $slide-distance: 56px;
   }
 
   &--mobile .icon-footer {
-    bottom: 200px;
+    bottom: 400px;
   }
 }
 </style>
