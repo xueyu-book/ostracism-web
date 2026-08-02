@@ -165,7 +165,6 @@ $slide-distance: 56px;
   height: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-  background: #7b00ff;
   overflow: hidden;
 
   img {
