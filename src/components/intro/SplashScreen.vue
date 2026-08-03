@@ -2,6 +2,7 @@
   <Teleport to="body">
     <div
       v-if="visible"
+      :key="playKey"
       class="splash-screen"
       :class="{ 'splash-screen--mobile': isMobile }"
       role="dialog"
@@ -63,20 +64,63 @@ function isMobileDevice() {
 }
 
 const visible = ref(true)
+const playKey = ref(0)
 const isMobile = ref(isMobileDevice())
 let closeTimer = null
 
-onMounted(() => {
+function clearCloseTimer() {
+  if (closeTimer !== null) {
+    window.clearTimeout(closeTimer)
+    closeTimer = null
+  }
+}
+
+function scheduleClose() {
+  clearCloseTimer()
   closeTimer = window.setTimeout(() => {
     visible.value = false
     closeTimer = null
   }, DURATION_MS)
+}
+
+function startSplash() {
+  clearCloseTimer()
+  playKey.value += 1
+  visible.value = true
+  scheduleClose()
+}
+
+function onPageShow(e) {
+  // bfcache 恢复时组件不会重新 mount，需要手动重播开屏
+  if (e.persisted) {
+    startSplash()
+  }
+}
+
+function onPrerenderingChange() {
+  // 地址栏历史/联想常会预渲染页面，计时与动画在后台已跑完；激活后再开播
+  if (!document.prerendering) {
+    startSplash()
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('pageshow', onPageShow)
+
+  if (document.prerendering) {
+    // 预渲染期间只遮罩，不启动关闭计时，等真正展示时再播动画
+    document.addEventListener('prerenderingchange', onPrerenderingChange, {
+      once: true
+    })
+  } else {
+    scheduleClose()
+  }
 })
 
 onBeforeUnmount(() => {
-  if (closeTimer !== null) {
-    window.clearTimeout(closeTimer)
-  }
+  clearCloseTimer()
+  window.removeEventListener('pageshow', onPageShow)
+  document.removeEventListener('prerenderingchange', onPrerenderingChange)
 })
 </script>
 
