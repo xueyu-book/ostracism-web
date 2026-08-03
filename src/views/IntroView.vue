@@ -113,7 +113,10 @@
       :style="{ '--fade-delay': `${fadeDelays.totem}ms` }"
       src="@/assets/images/home/0_active.svg"
       alt="图腾"
+      draggable="false"
       @pointerdown="onTotemPointerDown"
+      @contextmenu.prevent
+      @dragstart.prevent
     />
 
     <img
@@ -190,6 +193,7 @@
         :style="ghostStyle"
         src="@/assets/images/home/0_active.svg"
         alt=""
+        draggable="false"
       />
     </Teleport>
 
@@ -888,6 +892,9 @@ $totem-snap-duration: 0.3s;
     touch-action: none;
     cursor: grab;
     user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
     z-index: 3;
 
     &--pulse {
@@ -911,6 +918,10 @@ $totem-snap-duration: 0.3s;
     pointer-events: none;
     touch-action: none;
     cursor: grabbing;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
     filter: drop-shadow(0 6px 18px rgba($greek-blue, 0.45));
 
     &--snapping {
