@@ -1,7 +1,10 @@
 <template>
   <div
     class="intro-view"
-    :class="{ 'intro-view--project': contentVisible && isProjectModule }"
+    :class="{
+      'intro-view--project': contentVisible && isProjectModule,
+      'intro-view--settled': wallSettled
+    }"
   >
     <SplashScreen />
 
@@ -334,6 +337,7 @@ const isHiding = ref(false)
 const pillarsSpread = ref(false)
 const wallReady = ref(false)
 const wallSliding = ref(false)
+const wallSettled = ref(false)
 const navRevealed = ref(false)
 const contentVisible = ref(false)
 const activeNav = ref('card')
@@ -465,6 +469,7 @@ function scheduleNavReveal() {
   }
   navRevealTimer = window.setTimeout(() => {
     navRevealed.value = true
+    wallSettled.value = true
     navRevealTimer = null
     contentRevealTimer = window.setTimeout(() => {
       contentVisible.value = true
@@ -1117,6 +1122,15 @@ $totem-snap-duration: 0.3s;
 .intro-view--project {
   .intro-view__pillar {
     z-index: 1;
+  }
+}
+
+.intro-view--settled {
+  .intro-view__bg-panel,
+  .intro-view__pillar,
+  .intro-view__nav-pillar-wrap {
+    transition: none;
+    will-change: auto;
   }
 }
 
