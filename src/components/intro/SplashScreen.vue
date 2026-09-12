@@ -49,6 +49,14 @@
         alt=""
         class="icon-footer"
       />
+      <a
+        class="splash-beian"
+        href="https://beian.miit.gov.cn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        粤ICP备2026126915号
+      </a>
     </div>
   </Teleport>
 </template>
@@ -269,8 +277,29 @@ $slide-distance: 56px;
     animation: splash-fade-in 0.7s $stage-ease $stage-5-delay both;
   }
 
+  .splash-beian {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1;
+    color: #f8fafc;
+    text-decoration: none;
+    white-space: nowrap;
+    animation: splash-fade-in 0.7s $stage-ease $stage-5-delay both;
+  }
+
   &--mobile .icon-footer {
     bottom: 400px;
+  }
+
+  &--mobile .splash-beian {
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    font-size: 8px;
   }
 }
 </style>
