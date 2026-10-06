@@ -49,14 +49,28 @@
         alt=""
         class="icon-footer"
       />
-      <a
-        class="splash-beian"
-        href="https://beian.miit.gov.cn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        粤ICP备2026126915号
-      </a>
+      <div class="splash-beian">
+        <a
+          href="https://beian.miit.gov.cn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          粤ICP备2026126915号
+        </a>
+        <a
+          class="splash-beian__filing"
+          href="https://beian.mps.gov.cn/#/query/webSearch?code=44010402003851"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="@/assets/images/filing_icon.jpg"
+            alt=""
+            draggable="false"
+          />
+          粤公网安备44010402003851号
+        </a>
+      </div>
     </div>
   </Teleport>
 </template>
@@ -283,14 +297,39 @@ $slide-distance: 56px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    max-width: calc(100% - 24px);
     font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
     font-weight: 400;
     font-size: 10px;
     line-height: 1;
     color: #f8fafc;
-    text-decoration: none;
     white-space: nowrap;
     animation: splash-fade-in 0.7s $stage-ease $stage-5-delay both;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  .splash-beian__filing {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    img {
+      display: block;
+      width: 12px;
+      height: 14px;
+      flex-shrink: 0;
+      object-fit: contain;
+      opacity: 1;
+      animation: splash-fade-in 0.7s $stage-ease $stage-5-delay both;
+    }
   }
 
   &--mobile .icon-footer {
@@ -299,7 +338,13 @@ $slide-distance: 56px;
 
   &--mobile .splash-beian {
     bottom: calc(20px + env(safe-area-inset-bottom));
+    gap: 10px;
     font-size: 8px;
+  }
+
+  &--mobile .splash-beian__filing img {
+    width: 10px;
+    height: 11px;
   }
 }
 </style>

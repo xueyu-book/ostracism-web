@@ -236,6 +236,29 @@
         @scroll-sync="syncPillarScroll"
       />
     </main>
+
+    <div class="intro-view__beian">
+      <a
+        href="https://beian.miit.gov.cn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        粤ICP备2026126915号
+      </a>
+      <a
+        class="intro-view__beian-filing"
+        href="https://beian.mps.gov.cn/#/query/webSearch?code=44010402003851"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="@/assets/images/filing_icon.jpg"
+          alt=""
+          draggable="false"
+        />
+        粤公网安备44010402003851号
+      </a>
+    </div>
   </div>
 </template>
 
@@ -1115,6 +1138,44 @@ $totem-snap-duration: 0.3s;
       right: 54px;
       z-index: 3;
       overflow: visible;
+    }
+  }
+
+  &__beian {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    max-width: calc(100% - 48px);
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+    color: #3f3e3a;
+    white-space: nowrap;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &__beian-filing {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    img {
+      display: block;
+      width: 14px;
+      height: 16px;
+      flex-shrink: 0;
+      object-fit: contain;
     }
   }
 }
